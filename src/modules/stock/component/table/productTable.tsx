@@ -1,4 +1,4 @@
-import { CaretDoubleLeft, CaretDoubleRight, NetworkX, SkipBack, SkipForward, Users } from '@phosphor-icons/react';
+import { CaretDoubleLeft, CaretDoubleRight } from '@phosphor-icons/react';
 import { useState } from 'react';
 
 type tableProps = {

@@ -1,7 +1,5 @@
-import {  AddressBook, Airplay, AlignLeft, Barn, Gear, GitFork, Info, Log, Person, SignOut, Users } from "@phosphor-icons/react"
+import {  Airplay, Barn, Gear,  Info, SignOut, Users } from "@phosphor-icons/react"
 import { Link, useLocation } from "react-router-dom"
-
-import madeInAngola from "../../../../common/logo/madedInAngola.svg";
 
 export const SideBar = () => {
 

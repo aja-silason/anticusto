@@ -1,4 +1,3 @@
-import logo from "../../../../common/logo/logoAdvance.svg";
 import picture from "../../assets/images/picturePicture.png";
 import logoAnticusto from "../../../../assets/anticost-logo.jpg";
 

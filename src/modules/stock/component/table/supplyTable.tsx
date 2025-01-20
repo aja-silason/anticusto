@@ -1,5 +1,6 @@
 import { CaretDoubleLeft, CaretDoubleRight } from '@phosphor-icons/react';
 import { useState } from 'react';
+import SupplyModal from '../modal/supply-modal';
 
 type tableProps = {
     data: {
@@ -50,7 +51,11 @@ export const SupplyTable = ({data, title}: tableProps) => {
   return (
     <div className="container flex flex-col h-[100%] justify-start gap-[1em] border rounded-t-[10px] mx-auto p-4">
       
-        <h2 className="text-[#264A7D] font-[400] text-[16px]">{title}</h2>
+        <div className='flex justify-between'>
+          <h2 className="text-[#264A7D] font-[400] text-[16px]">{title}</h2>
+          <SupplyModal/>
+          {/* <span className="border border-[#000]">Fornecedor</span> */}
+        </div>
         
         <div className='overflow-auto'>
 

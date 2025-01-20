@@ -1,3 +1,4 @@
+import { CaretDoubleLeft, CaretDoubleRight, NetworkX, SkipBack, SkipForward, Users } from '@phosphor-icons/react';
 import { useState } from 'react';
 
 type tableProps = {
@@ -10,7 +11,7 @@ type tableProps = {
     title: string, 
 }
 
-export const Table = ({data, title}: tableProps) => {
+export const ProductTable = ({data, title}: tableProps) => {
   // Dados de exemplo
   
 
@@ -48,7 +49,7 @@ export const Table = ({data, title}: tableProps) => {
   };
 
   return (
-    <div className="container flex flex-col h-[100%] justify-between border rounded-t-[10px] mx-auto p-4">
+    <div className="container flex flex-col h-[100%] justify-start gap-[1em] border rounded-t-[10px] mx-auto p-4">
       
         <h2 className="text-[#264A7D] font-[400] text-[16px]">{title}</h2>
         
@@ -58,9 +59,9 @@ export const Table = ({data, title}: tableProps) => {
         <table className="min-w-full table-auto border-collapse">
                 <thead className="bg-brown-600] border rounded-[100px]">
                 <tr className='text-left border text-[14px] font-[700] text-[#727272] bg-[#F9F9F9] rounded-t-[10px]'>
-                    <th className="px-[.5em] py-2">Nome</th>
-                    <th className="px-[.5em] py-2">Sobrenome</th>
-                    <th className="px-[.5em] py-2">Idade</th>
+                    <th className="px-[.5em] py-2">Nome do Produto</th>
+                    <th className="px-[.5em] py-2">Preço</th>
+                    <th className="px-[.5em] py-2">Data de validade</th>
                 </tr>
 
                 </thead>
@@ -72,20 +73,20 @@ export const Table = ({data, title}: tableProps) => {
 
       </div>
 
-      <div className="pagination border-t pt-[.5em] mt-4 flex justify-center  ">
+      <div className="pagination border-t pt-[.5em] mt-4 flex justify-end  ">
         <button 
           onClick={handlePrevPage} 
-          className={`px-4 py-2 mx-2 rounded ${currentPage === 1 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
+          className={`p-[.4em] mx-2 rounded ${currentPage === 1 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
           disabled={currentPage === 1}
         >
-          Anterior
+          <CaretDoubleLeft className={`w-[20px] h-[20px] ${currentPage === 1 ? 'text-[#000] cursor-not-allowed' : "text-[#fff]"} `}/>
         </button>
         <button 
           onClick={handleNextPage} 
-          className={`px-4 py-2 mx-2 rounded ${currentPage * rowsPerPage >= data.length ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
+          className={`p-[.4em] mx-2 rounded ${currentPage * rowsPerPage >= data.length ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
           disabled={currentPage * rowsPerPage >= data.length}
         >
-          Próxima
+          <CaretDoubleRight className={`w-[20px] h-[20px] ${currentPage * rowsPerPage >= data.length ? 'text-[#000] cursor-not-allowed' : "text-[#fff]"} `}/>
         </button>
       </div>
     </div>

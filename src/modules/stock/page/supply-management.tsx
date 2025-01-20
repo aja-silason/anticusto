@@ -1,8 +1,8 @@
 import { Container } from "../component"
 
-export default function ContentManagement () {
+export default function SupplyManagement () {
     return (
-        <Container title="Conteúdo da Academia">
+        <Container title="Fornecedor">
             <h1>Content Management</h1>
             <p>Página para gerenciar conteúdo</p>
         </Container>

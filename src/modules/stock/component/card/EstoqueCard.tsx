@@ -6,7 +6,7 @@ type CardProps = {
     icon: ReactNode
 }
 
-export const StudentSubscribeCard = ({icon, title, quantity}: CardProps) => {
+export const EstoqueCard = ({icon, title, quantity}: CardProps) => {
     return (
         <div className="bg-[#fff] flex flex-col gap-[1em] md:p-[.5em] rounded-[.5em] md:w-[50%]">
             <div className="flex gap-[.5em] items-center">

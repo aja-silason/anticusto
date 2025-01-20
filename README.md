@@ -1,13 +1,13 @@
-# BackStage
+# AntiCusto ERP
 
-Uma aplicação destinada a gestão de todos os dados relacionados aos websites que estão sobre a alça da Baxtter Corporation.
+Uma aplicação destinada a gestão empresarial da Qlerius.
 
 
 
 ![Build Status](https://img.shields.io/badge/Status-developing-brightgreen)
 
 ## Descrição
-Este projeto é uma aplicação web para ajudar os usuários a organizar suas tarefas diárias dos websites.
+Este projeto é uma aplicação web para ajudar os usuários a fazer gestão . organizar suas tarefas diárias dos websites.
 
 ## Tabela de Conteúdos
 - [Instalação](#instalação)
@@ -20,16 +20,16 @@ Siga os passos abaixo para rodar o projeto localmente:
 
 1. Clone este repositório:
    ```bash
-   git clone https://anania_augusto@bitbucket.org/baxtter-development-team/backstages.git
+   git clone https://github.com/aja-silason/anticusto.git
 2. Navegue até a pasta do projeto:
     ```bash
-    cd backstages
+    cd anticusto
 3. Instale as dependências:
     ```bash
     npm install
 4. Inicie o servidor:
     ```bash
-    npm run backstage
+    npm run anticusto
 ## Uso
 
 Após a instalação, abra seu navegador e acesse ``http://localhost:5173/`` para começar a usar a aplicação.
@@ -42,7 +42,7 @@ Contribuições são bem-vindas! Veja o arquivo CONTRIBUTING.md para detalhes so
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.<br>
 
-E a engenharia é da interia responsábilidade de **,  qualquer forma de usar a aplicação entrar em contacto com um dos desenvolvedores. [Departamento de Programação](mailto:programacao@baxtterangola.com)
+E a engenharia é da inteira responsabilidade da Qlerius, qualquer forma de usar a aplicação entrar em contacto com a mesma. [Qlerius](mailto:geral@qlerius.com)
 
 ## Tecnologias
 

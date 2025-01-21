@@ -2,6 +2,7 @@ import { CaretDoubleLeft, CaretDoubleRight, Trash } from '@phosphor-icons/react'
 import { useState } from 'react';
 import SupplyModal from '../modal/supply-modal';
 import { supplyData } from '../../page/supply-management';
+import { useLocation } from 'react-router-dom';
 
 type tableProps = {
     data: {
@@ -39,9 +40,13 @@ export const SupplyTable = ({data, title}: tableProps) => {
         <td className="px-4 py-2">{data.product}</td>
         <td className="text-center px-[-4em] py-2">
 
-          <button className='bg-none border-none bg-[red] p-[.5em] rounded-[.2em]' onClick={() => handleDelete(index)}>
-            <Trash className={` w-[20px] h-[20px] text-[#fff] `}/>
-          </button>
+        {
+          isInIndex("/stock/supplymanagement") && 
+
+            <button className='bg-none border-none bg-[#ff0000] p-[.5em] rounded-[.2em]' onClick={() => handleDelete(index)}>
+              <Trash className={` w-[20px] h-[20px] text-[#fff] `}/>
+            </button>
+          }
 
         </td>
       </tr>
@@ -60,12 +65,18 @@ export const SupplyTable = ({data, title}: tableProps) => {
     }
   };
 
+  const location = useLocation();
+
+  const isInIndex = (path: string) => location.pathname === path;
+
   return (
     <div className="container flex flex-col h-[100%] justify-start gap-[1em] border rounded-t-[10px] mx-auto p-4">
       
         <div className='flex justify-between'>
           <h2 className="text-[#264A7D] font-[400] text-[16px]">{title}</h2>
-          <SupplyModal/>
+          {
+            isInIndex("/stock/supplymanagement") && <SupplyModal/>
+          }
         </div>
         
         <div className='overflow-auto'>

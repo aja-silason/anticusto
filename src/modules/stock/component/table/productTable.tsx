@@ -3,45 +3,39 @@ import { useState } from 'react';
 
 type tableProps = {
     data: {
-        firstName: string,
-        lastName: string,
-        age: number | null,
+        product: string,
+        price: string,
+        dataOfExpire: string,
 
     }[],
     title: string, 
 }
 
 export const ProductTable = ({data, title}: tableProps) => {
-  // Dados de exemplo
-  
 
   const rowsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Função para renderizar a tabela com base na página atual
   const renderTable = () => {
-    // Calcular as linhas a serem exibidas
     const startIdx = (currentPage - 1) * rowsPerPage;
     const endIdx = startIdx + rowsPerPage;
     const paginatedRows = data.slice(startIdx, endIdx);
 
     return paginatedRows.map((data, index) => (
       <tr key={index} className="border-t border-b">
-        <td className="px-4 py-2">{data.firstName}</td>
-        <td className="px-4 py-2">{data.lastName}</td>
-        <td className="px-4 py-2">{data.age || 'N/A'}</td>
+        <td className="px-4 py-2">{data.product}</td>
+        <td className="px-4 py-2">{data.price}</td>
+        <td className="px-4 py-2">{data.dataOfExpire}</td>
       </tr>
     ));
   };
 
-  // Função para mudar para a página anterior
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  // Função para mudar para a próxima página
   const handleNextPage = () => {
     if (currentPage * rowsPerPage < data.length) {
       setCurrentPage(currentPage + 1);

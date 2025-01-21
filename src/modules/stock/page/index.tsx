@@ -3,30 +3,18 @@ import { Container, Card, ProductTable, SupplyTable } from "../component";
 import { supplyProps } from "../hook/create/supply";
 
 export const rows = [
-    { firstName: "Jon", lastName: "Snow", age: 35 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 },
-    { firstName: "Cersei", lastName: "Lannister", age: 42 }
+    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
+    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
+    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
+    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
+    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
+    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
+    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
+    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
+    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
+    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
+    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
+    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
   ];
 
 export const supplyData: supplyProps[] = [

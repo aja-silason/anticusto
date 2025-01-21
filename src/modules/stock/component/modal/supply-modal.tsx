@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { ClosedCaptioning, X } from '@phosphor-icons/react';
+import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
 import { useCreateSupply } from '../../hook/create/supply';
 

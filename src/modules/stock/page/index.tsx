@@ -1,5 +1,6 @@
 import { Gear } from "@phosphor-icons/react";
 import { Container, Card, ProductTable, SupplyTable } from "../component";
+import { supplyProps } from "../hook/create/supply";
 
 export const rows = [
     { firstName: "Jon", lastName: "Snow", age: 35 },
@@ -28,7 +29,7 @@ export const rows = [
     { firstName: "Cersei", lastName: "Lannister", age: 42 }
   ];
 
-export const supplyData = [
+export const supplyData: supplyProps[] = [
     {supply: "Honey Store", product: "Mel"},
     {supply: "Honey Store", product: "Mel"},
   ]

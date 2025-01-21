@@ -1,6 +1,7 @@
-import { CaretDoubleLeft, CaretDoubleRight } from '@phosphor-icons/react';
+import { CaretDoubleLeft, CaretDoubleRight, Trash } from '@phosphor-icons/react';
 import { useState } from 'react';
 import SupplyModal from '../modal/supply-modal';
+import { supplyData } from '../../page/supply-management';
 
 type tableProps = {
     data: {
@@ -12,38 +13,49 @@ type tableProps = {
 }
 
 export const SupplyTable = ({data, title}: tableProps) => {
-  // Dados de exemplo
-  
 
   const rowsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Função para renderizar a tabela com base na página atual
   const renderTable = () => {
-    // Calcular as linhas a serem exibidas
     const startIdx = (currentPage - 1) * rowsPerPage;
     const endIdx = startIdx + rowsPerPage;
-    const paginatedRows = data.slice(startIdx, endIdx);
+    const paginatedRows = data?.slice(startIdx, endIdx);
 
-    return paginatedRows.map((data, index) => (
+    const handleDelete = (i: number) => {
+      // supplyData.pop();
+      // ...supplyData
+
+      const ap = supplyData?.filter((item) => item?.id !== i);
+
+      return ap;
+
+
+    }
+
+    return paginatedRows?.map((data, index) => (
       <tr key={index} className="border-t border-b">
         <td className="px-4 py-2">{data.supply}</td>
         <td className="px-4 py-2">{data.product}</td>
-        {/* <td className="px-4 py-2">{data.age || 'N/A'}</td> */}
+        <td className="text-center px-[-4em] py-2">
+
+          <button className='bg-none border-none bg-[red] p-[.5em] rounded-[.2em]' onClick={() => handleDelete(index)}>
+            <Trash className={` w-[20px] h-[20px] text-[#fff] `}/>
+          </button>
+
+        </td>
       </tr>
     ));
   };
 
-  // Função para mudar para a página anterior
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  // Função para mudar para a próxima página
   const handleNextPage = () => {
-    if (currentPage * rowsPerPage < data.length) {
+    if (currentPage * rowsPerPage < data?.length) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -54,18 +66,17 @@ export const SupplyTable = ({data, title}: tableProps) => {
         <div className='flex justify-between'>
           <h2 className="text-[#264A7D] font-[400] text-[16px]">{title}</h2>
           <SupplyModal/>
-          {/* <span className="border border-[#000]">Fornecedor</span> */}
         </div>
         
         <div className='overflow-auto'>
 
         
-        <table className="min-w-full table-auto border-collapse border h-[100%]">
+        <table className="overflow-auto min-w-full table-auto border-collapse border h-[100%]">
                 <thead className="bg-brown-600] border rounded-[100px]">
                 <tr className='text-left border text-[14px] font-[700] text-[#727272] bg-[#F9F9F9] rounded-t-[10px]'>
                     <th className="px-[.5em] py-2">Fornecedor</th>
                     <th className="px-[.5em] py-2">Produto</th>
-                    {/* <th className="px-[.5em] py-2">Data de validade</th> */}
+                    <th className="px-[.5em] py-2"></th>
                 </tr>
 
                 </thead>
@@ -87,10 +98,10 @@ export const SupplyTable = ({data, title}: tableProps) => {
         </button>
         <button 
           onClick={handleNextPage} 
-          className={`p-[.4em] mx-2 rounded ${currentPage * rowsPerPage >= data.length ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
-          disabled={currentPage * rowsPerPage >= data.length}
+          className={`p-[.4em] mx-2 rounded ${currentPage * rowsPerPage >= data?.length ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
+          disabled={currentPage * rowsPerPage >= data?.length}
         >
-          <CaretDoubleRight className={`w-[20px] h-[20px] ${currentPage * rowsPerPage >= data.length ? 'text-[#000] cursor-not-allowed' : "text-[#fff]"} `}/>
+          <CaretDoubleRight className={`w-[20px] h-[20px] ${currentPage * rowsPerPage >= data?.length ? 'text-[#000] cursor-not-allowed' : "text-[#fff]"} `}/>
         </button>
       </div>
     </div>

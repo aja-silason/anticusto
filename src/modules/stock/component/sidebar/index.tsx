@@ -27,7 +27,7 @@ export const SideBar = () => {
                             </Link>
 
                             <Link to="/stock/supplymanagement" className="flex justify-start gap-[.5em]">
-                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/academy/supplymanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
+                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/stock/supplymanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
 
                                 <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/stock/supplymanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
                                     <Users className="w-[20px] h-[20px]"/>
@@ -36,7 +36,7 @@ export const SideBar = () => {
                             </Link>
 
                             <Link to="/stock/stockmanagement" className="flex justify-start gap-[.5em]">
-                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/academy/stockmanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
+                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/stock/stockmanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
 
                                 <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/stock/stockmanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
                                     <Barn className="w-[20px] h-[20px]"/>

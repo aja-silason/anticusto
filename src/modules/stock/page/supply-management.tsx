@@ -2,13 +2,12 @@ import { Users } from "@phosphor-icons/react"
 import { Container, Card, SupplyTable  } from "../component"
 
 export const supplyData = [
-    {supply: "Honey Store", product: "Mel"},
-    {supply: "Alimenta Angola", product: "Manteiga"},
-    {supply: "FresMart", product: "Pão"}
+    {id: 0, supply: "Honey Store", product: "Mel"},
+    {id: 1, supply: "Alimenta Angola", product: "Manteiga"},
+    {id: 2, supply: "FresMart", product: "Pão"}
 ]
 
 export default function SupplyManagement () {
-
 
     return (
         <Container title="Fornecedor">

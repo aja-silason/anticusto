@@ -41,10 +41,14 @@ export default function SupplyModal() {
             </button>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal
-            <Input value={data?.supply} change={handleChange} name='supply'/>
-            <Input value={data?.product} change={handleChange} name='product'/>
 
-            <button onClick={handleSubmit}>Enviar</button>
+            <form onSubmit={handleSubmit}>
+                <Input value={data?.supply} change={handleChange} name='supply'/>
+                <Input value={data?.product} change={handleChange} name='product'/>
+
+                <button>Enviar</button>
+            </form>
+
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.

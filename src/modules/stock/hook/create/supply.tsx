@@ -1,13 +1,17 @@
 import axios from "axios";
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 import { supplyData } from "../../page/supply-management";
 
-type supplyProps = {
+export type supplyProps = {
     supply: string,
     product: string
 }
 
+
+
 export const useCreateSupply = () => {
+
+    const [list, setList] = useState<supplyProps[]>(supplyData);
 
     const [data, setData] = useState<supplyProps>({supply: "", product: ""});
 
@@ -19,12 +23,12 @@ export const useCreateSupply = () => {
         }));
     }
 
-    const handleSubmit = async () => {
-
+    const handleSubmit = async (e: FormEvent) => {
+        e?.preventDefault();
         try {
-            supplyData.push(data);
-            // const  ab = await axios.post("")
-            
+            setList(prevItem => [...prevItem, data]);
+
+            console.log("Lista", list)
         } catch (error) {
             console.log(error);
         }
@@ -34,7 +38,9 @@ export const useCreateSupply = () => {
     return {
         data,
         handleChange,
-        handleSubmit
+        handleSubmit,
+
+        list
     }
 
 }

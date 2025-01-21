@@ -6,6 +6,10 @@ import Settings from "../modules/stock/page/settings";
 import SupportStock from "../modules/stock/page/support";
 import SupplyManagement from "../modules/stock/page/supply-management";
 
+import HomeSale from "../modules/sale/page";
+import SupportSale from "../modules/sale/page/support";
+import ClientManagement from "../modules/sale/page/client-management";
+
 
 export function RoutePath () {
     return (
@@ -16,6 +20,10 @@ export function RoutePath () {
                 <Route path="stock/support" element={<SupportStock/>}/>
                 <Route path="stock/settings" element={<Settings/>}/> 
                 <Route path="stock/supplymanagement" element={<SupplyManagement/>}/> 
+
+                <Route path="sale" element={<HomeSale/>}/> 
+                <Route path="sale/client" element={<ClientManagement/>}/> 
+                <Route path="sale/support" element={<SupportSale/>}/>
                 
 
             </Routes>

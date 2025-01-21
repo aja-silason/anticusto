@@ -22,7 +22,7 @@ export const supplyData: supplyProps[] = [
     {supply: "Honey Store", product: "Mel"},
   ]
 
-export default function HomeAcademy() {
+export default function HomeStock() {
 
     return (
         <Container title="Home">

@@ -1,40 +1,54 @@
-import { Gear } from "@phosphor-icons/react";
-import { Container, Card, ProductTable, SupplyTable } from "../component";
-import { supplyProps } from "../hook/create/supply";
+import { Barcode, Money, MoneyWavy } from "@phosphor-icons/react";
+import { Container, Card, SalesTable } from "../component";
 
-export const rows = [
-    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
-    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
-    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
-    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
-    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
+const mockrowsDay = [
+    { clientName: "Anania Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
+    { clientName: "Jaime Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
+    { clientName: "Jaime Linice", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
   ];
 
-export const supplyData: supplyProps[] = [
-    {supply: "Honey Store", product: "Mel"},
-    {supply: "Honey Store", product: "Mel"},
-  ]
+const mockrowsWeek = [
+    { clientName: "Anania Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
+    { clientName: "Jaime Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
+    { clientName: "Jaime Linice", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
+    { clientName: "Jaime Linice", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
+    { clientName: "Jaime Linice", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
+  ];
 
-export default function HomeAcademy() {
+const mockrowsMonth = [
+    { clientName: "Anania Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
+    { clientName: "Jaime Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
+  ];
+
+
+  const allLSale = mockrowsDay.concat(mockrowsWeek).concat(mockrowsMonth);
+
+  const totalMockDay = mockrowsDay.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
+
+  const totalMockWeek = mockrowsWeek.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
+
+  const totalMockMonth = mockrowsMonth.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
+
+
+
+export default function HomeSale() {
 
     return (
-        <Container title="Home">
+        <Container title="Posto de venda">
             <div className="flex gap-[.5em] justify-between">
-                <Card quantity={rows?.length ?? 0} title="Produtos em Estoque" icon={<Gear className="w-[2em] h-[2em] text-[#264A7D]" />} />
-                <Card quantity={supplyData?.length ?? 0} title="Fornecedores" icon={<Gear className="w-[2em] h-[2em] text-[#264A7D]" />} />
 
+                <Card quantity={mockrowsDay?.length ?? 0} value={totalMockDay} title="Venda diária" icon={<Barcode className="w-[2em] h-[2em] text-[#264A7D]" />} />
+                
+                <Card quantity={mockrowsWeek?.length ?? 0} value={totalMockWeek} title="Venda Semanal" icon={<MoneyWavy className="w-[2em] h-[2em] text-[#264A7D]" />} />
+                
+                <Card quantity={mockrowsMonth?.length ?? 0} value={totalMockMonth} title="Venda mensal" icon={<Money className="w-[2em] h-[2em] text-[#264A7D]" />} />
+                
             </div>
 
             <div className="bg-[#fff] flex gap-[1em] w-[100%] p-[.5em] rounded-[.5em] md:h-[70%]">
-                <ProductTable data={rows} title="Produtos Registrados"/>
-                <SupplyTable data={supplyData} title="Fornecedores Encontrados"/>
+
+                <SalesTable data={allLSale} title="Vendas Registradas"/>
+                
             </div>
         </Container>
     )

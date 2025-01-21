@@ -1,4 +1,6 @@
-import {  Airplay, Barn, Gear,  Info, SignOut, Users } from "@phosphor-icons/react"
+import {  Airplay, Barn,
+    //  Gear, 
+     Info, SignOut, Users } from "@phosphor-icons/react"
 import { Link, useLocation } from "react-router-dom"
 
 export const SideBar = () => {
@@ -66,7 +68,7 @@ export const SideBar = () => {
                                 </li>
                             </Link>
 
-                            <Link to="/stock/settings" className="flex justify-start gap-[.5em]">
+                            {/* <Link to="/stock/settings" className="flex justify-start gap-[.5em]">
 
                                 <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/stock/settings") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
 
@@ -74,7 +76,7 @@ export const SideBar = () => {
                                     <Gear className="w-[20px] h-[20px]"/>
                                     Configurações            
                                 </li>
-                            </Link>
+                            </Link> */}
 
                             <Link to="/stock/settings" className="flex justify-start gap-[.5em]">
 

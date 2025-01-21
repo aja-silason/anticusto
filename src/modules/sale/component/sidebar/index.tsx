@@ -1,4 +1,4 @@
-import {  Airplay, Barn, Gear,  Info, SignOut, Users } from "@phosphor-icons/react"
+import {  Airplay, Info, SignOut, Users } from "@phosphor-icons/react"
 import { Link, useLocation } from "react-router-dom"
 
 export const SideBar = () => {
@@ -17,30 +17,21 @@ export const SideBar = () => {
 
                     <nav className="sidebar">
                         <ul className="flex flex-col gap-[1em] text-[14px]">
-                            <Link to="/stock" className="flex justify-start gap-[.5em]">
-                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/stock") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
+                            <Link to="/sale" className="flex justify-start gap-[.5em]">
+                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/sale") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
                                 
-                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/stock") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
+                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/sale") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
                                     <Airplay className="w-[20px] h-[20px]"/>
                                     Página Inicial            
                                 </li>
                             </Link>
 
-                            <Link to="/stock/supplymanagement" className="flex justify-start gap-[.5em]">
-                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/stock/supplymanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
-
-                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/stock/supplymanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
+                            <Link to="/sale/client" className="flex justify-start gap-[.5em]">
+                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/sale/client") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
+                                
+                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/sale/client") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
                                     <Users className="w-[20px] h-[20px]"/>
-                                    Gerir Fonecedor
-                                </li>
-                            </Link>
-
-                            <Link to="/stock/stockmanagement" className="flex justify-start gap-[.5em]">
-                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/stock/stockmanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
-
-                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/stock/stockmanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
-                                    <Barn className="w-[20px] h-[20px]"/>
-                                    Gerir Estoque
+                                    Registrar Cliente          
                                 </li>
                             </Link>
 
@@ -56,27 +47,27 @@ export const SideBar = () => {
 
                     <nav className="">
                         <ul className="flex flex-col gap-[1em] text-[14px]">
-                            <Link to="/stock/support" className="flex justify-start gap-[.5em]">
+                            <Link to="/sale/support" className="flex justify-start gap-[.5em]">
 
-                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/stock/support") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
+                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/sale/support") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
 
-                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/stock/support") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
+                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/sale/support") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
                                     <Info className="w-[20px] h-[20px]"/>
                                     Suporte            
                                 </li>
                             </Link>
 
-                            <Link to="/stock/settings" className="flex justify-start gap-[.5em]">
+                            {/* <Link to="/sale/settings" className="flex justify-start gap-[.5em]">
 
-                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/stock/settings") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
+                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/sale/settings") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
 
-                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/stock/settings") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
+                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/sale/settings") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
                                     <Gear className="w-[20px] h-[20px]"/>
                                     Configurações            
                                 </li>
-                            </Link>
+                            </Link> */}
 
-                            <Link to="/stock/settings" className="flex justify-start gap-[.5em]">
+                            <Link to="/sale/settings" className="flex justify-start gap-[.5em]">
 
                                 <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/academy/settings") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
 

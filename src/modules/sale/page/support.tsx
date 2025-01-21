@@ -1,7 +1,7 @@
 import { Container, SubmitButton, Textarea } from "../component";
 import { useRequestSupport } from "../hook";
 
-export default function SupportStock() {
+export default function SupportSale() {
 
     const {data, handleSubmit, handleChange} = useRequestSupport();
 

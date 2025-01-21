@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { supplyData } from "../../page/supply-management";
+import { toast } from "sonner";
 
 export type supplyProps = {
     supply: string,
@@ -23,13 +24,23 @@ export const useCreateSupply = () => {
     }
 
     const handleSubmit = async (e: FormEvent) => {
+        
         e?.preventDefault();
+        
         try {
+            
             setList(prevItem => [...prevItem, data]);
+            
+            setData(({supply: "", product: ""}));
 
-            console.log("Lista", list)
+            toast.success("Fornecedor Adicionado com sucesso", {duration: 3000});
+
+            console.log("Lista", list);
+
         } catch (error) {
+            
             console.log(error);
+
         }
 
     }

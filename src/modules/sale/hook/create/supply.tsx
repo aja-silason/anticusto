@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react"
+import { supplyData } from "../../page/supply-management";
 import { toast } from "sonner";
 
 export type supplyProps = {
@@ -9,6 +10,8 @@ export type supplyProps = {
 
 
 export const useCreateSupply = () => {
+
+    const [list, setList] = useState<supplyProps[]>(supplyData);
 
     const [data, setData] = useState<supplyProps>({supply: "", product: ""});
 
@@ -25,16 +28,14 @@ export const useCreateSupply = () => {
         e?.preventDefault();
         
         try {
-                        
-            const payload: supplyProps = {
-                supply: data?.supply,
-                product: data?.product
-            }
-
-            console.log("Lista", payload);
+            
+            setList(prevItem => [...prevItem, data]);
+            
+            setData(({supply: "", product: ""}));
 
             toast.success("Fornecedor Adicionado com sucesso", {duration: 3000});
 
+            console.log("Lista", list);
 
         } catch (error) {
             
@@ -48,6 +49,8 @@ export const useCreateSupply = () => {
         data,
         handleChange,
         handleSubmit,
+
+        list
     }
 
 }

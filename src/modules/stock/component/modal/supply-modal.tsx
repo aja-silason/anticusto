@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
-import { useCreateSupply } from '../../hook/create/supply';
+import { useCreateSupply } from '../../hook';
 import { SubmitButton } from '../button/submitButton';
 import { ModalButton } from '../button/ModalButton';
 

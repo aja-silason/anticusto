@@ -3,9 +3,9 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
+import { useCreateSupply } from '../../hook/create/supply';
 import { SubmitButton } from '../button/submitButton';
 import { ModalButton } from '../button/ModalButton';
-import { useCreateStock } from '../../hook';
 
 const style = {
   position: 'absolute',
@@ -20,7 +20,7 @@ const style = {
   p: 2,
 };
 
-export default function StockModal() {
+export default function SupplyModal() {
   
   const [open, setOpen] = React.useState(false);
   
@@ -28,13 +28,14 @@ export default function StockModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateStock();
+  const {data, handleChange, handleSubmit} = useCreateSupply();
 
   return (
     
     <div>
 
-      <ModalButton onClick={handleOpen} text="Registrar Producto"/>
+      {/* <Button onClick={handleOpen}>Open modal</Button> */}
+      <ModalButton onClick={handleOpen} text="Registrar Fornecedor"/>
       
       <Modal
       
@@ -53,7 +54,7 @@ export default function StockModal() {
 
             <div className='flex justify-between'>
 
-              <h3>Registrar Producto no Estoque</h3>
+              <h3>Registrar Fornecedor</h3>
               
               <button onClick={handleClose}>
                   
@@ -65,11 +66,9 @@ export default function StockModal() {
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-[.5em] justify-center items-center'>
 
-                <Input label='Producto' value={data?.product} change={handleChange} name='product'/>
+                <Input label='Fornecedor' value={data?.supply} change={handleChange} name='supply'/>
               
-                <Input label='Preço' value={data?.price} change={handleChange} name='price'/>
-
-                <Input label='Data de validade' type='date' value={data?.dateOfExpire} change={handleChange} name='dateOfExpire'/>
+                <Input label='Producto' value={data?.product} change={handleChange} name='product'/>
               
                 <SubmitButton text='Registrar'/>
 

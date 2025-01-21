@@ -1,16 +1,18 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from "sonner";
 
-export type supplyProps = {
-    supply: string,
+export type stockProps = {
     product: string
+    price: number,
+    dateOfExpire: string
 }
 
 
 
-export const useCreateSupply = () => {
+export const useCreateStock = () => {
 
-    const [data, setData] = useState<supplyProps>({supply: "", product: ""});
+
+    const [data, setData] = useState<stockProps>({product: "", price: 0 ,dateOfExpire: ""});
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | any>) => {
         const {value, name} = e?.target;
@@ -25,15 +27,16 @@ export const useCreateSupply = () => {
         e?.preventDefault();
         
         try {
-                        
-            const payload: supplyProps = {
-                supply: data?.supply,
-                product: data?.product
+
+            const payload: stockProps = {
+                product: data?.product,
+                price: data?.price,
+                dateOfExpire: data?.dateOfExpire
             }
 
             console.log("Lista", payload);
 
-            toast.success("Fornecedor Adicionado com sucesso", {duration: 3000});
+            toast.success("Producto Adicionado com sucesso no stock", {duration: 3000});
 
 
         } catch (error) {

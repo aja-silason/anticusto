@@ -6,17 +6,18 @@ import Modal from '@mui/material/Modal';
 import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
 import { useCreateSupply } from '../../hook/create/supply';
+import { SubmitButton } from '../button/submitButton';
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 600,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: '1px solid #ccc',
   boxShadow: 24,
-  p: 4,
+  p: 2,
 };
 
 export default function SupplyModal() {
@@ -36,23 +37,28 @@ export default function SupplyModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-            <button onClick={handleClose}>
-                <X className={`w-[20px] h-[20px]  "text-[#fff]"} `}/>
-            </button>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
 
-            <form onSubmit={handleSubmit}>
-                <Input value={data?.supply} change={handleChange} name='supply'/>
-                <Input value={data?.product} change={handleChange} name='product'/>
+          <div className='flex flex-col'>
 
-                <button>Enviar</button>
-            </form>
+              <div className='flex justify-end'>
+                <button onClick={handleClose}>
+                    <X className={`w-[20px] h-[20px] "text-[#fff]"} `}/>
+                </button>
+              </div>
+              
 
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+              <div className='flex flex-col gap-[1em]'>
+                <h3>Registrar Fornecedor</h3>
+                <form onSubmit={handleSubmit} className='flex flex-col gap-[.5em] justify-center items-center'>
+                    <Input label='Fornecedor' value={data?.supply} change={handleChange} name='supply'/>
+                    <Input label='Producto' value={data?.product} change={handleChange} name='product'/>
+                    <SubmitButton text='Registrar'/>
+                </form>
+              </div>
+
+
+          </div>
+
         </Box>
       </Modal>
     </div>

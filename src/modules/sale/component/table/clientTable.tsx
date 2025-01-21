@@ -1,5 +1,6 @@
 import { CaretDoubleLeft, CaretDoubleRight } from '@phosphor-icons/react';
 import { useState } from 'react';
+import ClientModal from '../modal/client-modal';
 
 type tableProps = {
     data: {
@@ -43,8 +44,11 @@ export const ClientTable = ({data, title}: tableProps) => {
 
   return (
     <div className="container flex flex-col h-[100%] justify-start gap-[1em] border rounded-t-[10px] mx-auto p-4">
-      
+
+      <div className='flex justify-between items-center'>
         <h2 className="text-[#264A7D] font-[400] text-[16px]">{title}</h2>
+        <ClientModal/>
+      </div>
         
         <div className='overflow-auto'>
 

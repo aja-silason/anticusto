@@ -1,11 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { X } from '@phosphor-icons/react';
-import { Input } from '../input/input';
-import { useCreateSupply } from '../../hook/create/supply';
-import { SubmitButton } from '../button/submitButton';
-import { ModalButton } from '../button/ModalButton';
+import { Eye, X } from '@phosphor-icons/react';
 
 const style = {
   position: 'absolute',
@@ -20,7 +16,13 @@ const style = {
   p: 2,
 };
 
-export default function SupplyModal() {
+type aa = {
+  data: any,
+  index: number
+}
+
+
+export default function ItemSoldModal({data, index}: aa) {
   
   const [open, setOpen] = React.useState(false);
   
@@ -28,14 +30,12 @@ export default function SupplyModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateSupply();
 
   return (
     
     <div>
 
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
-      <ModalButton onClick={handleOpen} text="Registrar Fornecedor"/>
+      <Eye className={`w-[50%] h-[20px] "text-[#fff]"} cursor-pointer text-[#264A7D]`} onClick={handleOpen}/>
       
       <Modal
       
@@ -54,7 +54,7 @@ export default function SupplyModal() {
 
             <div className='flex justify-between'>
 
-              <h3>Registrar Fornecedor</h3>
+              <h3>Venda Nº {index}</h3>
               
               <button onClick={handleClose}>
                   
@@ -64,15 +64,15 @@ export default function SupplyModal() {
 
             </div>
 
-            <form onSubmit={handleSubmit} className='flex flex-col gap-[.5em] justify-center items-center'>
+            <div>
+              <div>
+                Cliente: {data?.clientName}<br/>
+                Cliente: {data?.phoneClient}<br/>
+                Cliente: {data?.product}<br/>
+                Cliente: {data?.quantity}
+              </div>
 
-                <Input label='Fornecedor' value={data?.supply} change={handleChange} name='supply'/>
-              
-                <Input label='Producto' value={data?.product} change={handleChange} name='product'/>
-              
-                <SubmitButton text='Registrar'/>
-
-            </form>
+            </div>
           
           </div>
 

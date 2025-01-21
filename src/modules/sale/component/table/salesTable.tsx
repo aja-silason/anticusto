@@ -1,5 +1,7 @@
 import { CaretDoubleLeft, CaretDoubleRight } from '@phosphor-icons/react';
 import { useState } from 'react';
+import SaleModal from '../modal/sale-modal';
+import ItemSoldModal from '../modal/item-sold-modal';
 
 type tableProps = {
     data: {
@@ -22,15 +24,18 @@ export const SalesTable = ({data, title}: tableProps) => {
     const endIdx = startIdx + rowsPerPage;
     const paginatedRows = data.slice(startIdx, endIdx);
 
-    return paginatedRows.map((data, index) => (
-      <tr key={index} className="border-t border-b">
-        <td className="px-4 py-2">{data.clientName}</td>
-        <td className="px-4 py-2">{data.phoneClient}</td>
-        <td className="px-4 py-2">{data.product}</td>
-        <td className="px-4 py-2">{data.quantity}</td>
-      </tr>
-    ));
-  };
+    return paginatedRows.map((data, index: number) => 
+       (
+        <tr key={index} className="border-t border-b">
+          <td className="px-4 py-2">{data.clientName}</td>
+          <td className="px-4 py-2">{data.phoneClient}</td>
+          <td className="px-4 py-2">{data.product}</td>
+          <td className="px-4 py-2">{data.quantity}</td> 
+          {/* <SaleModal/>  */}
+          <ItemSoldModal data={data} index={index}/>
+        </tr> 
+        ));
+    };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
@@ -47,7 +52,11 @@ export const SalesTable = ({data, title}: tableProps) => {
   return (
     <div className="container flex flex-col h-[100%] justify-start gap-[1em] border rounded-t-[10px] mx-auto p-4">
       
-        <h2 className="text-[#264A7D] font-[400] text-[16px]">{title}</h2>
+        <div className='flex justify-between'>
+          <h2 className="text-[#264A7D] font-[400] text-[16px]">{title}</h2>
+          <SaleModal/>
+        </div>
+      
         
         <div className='overflow-auto'>
 
@@ -59,6 +68,7 @@ export const SalesTable = ({data, title}: tableProps) => {
                     <th className="px-[.5em] py-2">Telefone</th>
                     <th className="px-[.5em] py-2">Producto</th>
                     <th className="px-[.5em] py-2">Quantidade</th>
+                    <th className="px-[.5em] py-2">Acção</th>
                 </tr>
 
                 </thead>

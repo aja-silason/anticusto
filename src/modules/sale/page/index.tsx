@@ -21,7 +21,7 @@ const mockrowsMonth = [
   ];
 
 
-  const allLSale = mockrowsDay.concat(mockrowsWeek).concat(mockrowsMonth);
+  const allSale = mockrowsDay.concat(mockrowsWeek).concat(mockrowsMonth);
 
   const totalMockDay = mockrowsDay.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
 
@@ -47,8 +47,8 @@ export default function HomeSale() {
 
             <div className="bg-[#fff] flex gap-[1em] w-[100%] p-[.5em] rounded-[.5em] md:h-[70%]">
 
-                <SalesTable data={allLSale} title="Vendas Registradas"/>
-                
+                <SalesTable data={allSale} title="Vendas Registradas"/>
+
             </div>
         </Container>
     )

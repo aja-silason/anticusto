@@ -6,11 +6,11 @@ type inputProps = {
     label: string
 }
 
-export const Input = ({value, change, name, label}: inputProps) => {
+export const Textarea = ({value, change, name, label}: inputProps) => {
     return (
         <div className="flex flex-col gap-[.5em] w-[100%]">
             <label htmlFor={name} className="text-[11pt]">{label}</label>
-            <input type="text" placeholder="" id={name} onChange={change} value={value} name={name} className="border border-[#ccc] rounded-[5px] p-[.5em] w-[100%]"/>
+            <textarea  id={name} onChange={change} value={value} name={name} className="border md:h-[300px] border-[#ccc] rounded-[5px] p-[.5em] w-[100%]"></textarea>
         </div>
     )
 }

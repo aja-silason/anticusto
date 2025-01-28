@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { USER_DATA_ROLE, USER_MASTER_VERIFY } from "../common/utils/storageVariables"
+import { SwitchModule } from "../common";
 
 export const MasterScreen = () => {
     
@@ -33,8 +34,23 @@ export const MasterScreen = () => {
             <h2 className="text-[#264A7D] text-[14pt] font-[400]">Escolha um dos módulos para adentrares</h2>
 
                 <div className="flex gap-[1em] w-full items-center justify-center bg-[#fff] rounded-[.5em] overflow-auto flex-wrap">
-                    <button onClick={() => handleSwitchModule("stock")} className="bg-[#264A7D] text-[#fff] w-[20%] h-[20%] flex items-center justify-center p-[3em] rounded-[.3em]">Gestão de Estoque</button>
-                    <button onClick={() => handleSwitchModule("saler")} className="bg-[#264A7D] text-[#fff] w-[20%] h-[20%] flex items-center justify-center p-[3em] rounded-[.3em]">Venda</button>
+                    
+                    <SwitchModule onClick={() => handleSwitchModule("stock")} text="Gestão de Estoque" isActive/>
+                    
+                    <SwitchModule onClick={() => handleSwitchModule("saler")} text="Venda" isActive/>
+
+                    <SwitchModule onClick={() => handleSwitchModule("administrator")} text="Administrador" />
+                    
+                    <SwitchModule onClick={() => handleSwitchModule("finantial")} text="Gestão de Financeira" />
+
+                    <SwitchModule onClick={() => handleSwitchModule("repports")} text="Relatórios" />
+                    
+                    <SwitchModule onClick={() => handleSwitchModule("stock")} text="..." />
+
+                    <SwitchModule onClick={() => handleSwitchModule("stock")} text="..." />
+
+                    <SwitchModule onClick={() => handleSwitchModule("stock")} text="..." />
+
 
                 </div>
 

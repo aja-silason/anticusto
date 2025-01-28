@@ -1,5 +1,8 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
+
+import { LoginScreen } from "../modules";
+
 import HomeStock from "../modules/stock/page";
 import StockManagement from "../modules/stock/page/stock-management";
 import Settings from "../modules/stock/page/settings";
@@ -15,6 +18,8 @@ export function RoutePath () {
     return (
         <Router>
             <Routes>
+                <Route path="login" element={<LoginScreen/>}/>
+
                 <Route path="stock" element={<HomeStock/>}/>
                 <Route path="stock/stockmanagement" element={<StockManagement/>}/>
                 <Route path="stock/support" element={<SupportStock/>}/>

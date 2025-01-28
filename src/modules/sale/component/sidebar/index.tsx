@@ -1,5 +1,6 @@
-import {  Airplay, Info, SignOut, Users } from "@phosphor-icons/react"
+import {  Airplay, DeviceRotate, Info, SignOut, Users } from "@phosphor-icons/react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
+import { USER_DATA_ROLE, USER_MASTER_VERIFY } from "../../../../common/utils/storageVariables";
 
 export const SideBar = () => {
 
@@ -8,9 +9,18 @@ export const SideBar = () => {
 
     const isActive = (path: string) => location.pathname === path;
 
+    const isMaster = localStorage.getItem(USER_MASTER_VERIFY);
+    const parsedIsMaster = isMaster && JSON.parse(isMaster);
+
     const handleLogout = () => {
         localStorage?.clear();
         navigate("/", {replace: true})
+    }
+
+    const handleSwitchModule = (module: string) => {
+        localStorage.setItem(USER_DATA_ROLE, JSON.stringify(module));
+        localStorage.removeItem(USER_MASTER_VERIFY);
+        navigate("/master", {replace: true});
     }
 
     return (
@@ -73,15 +83,27 @@ export const SideBar = () => {
                                 </li>
                             </Link> */}
 
+                            {
+                                parsedIsMaster && (
+                                        <button className="flex justify-start gap-[.5em]" onClick={() => handleSwitchModule("master")}>
+                                            <span className={`h-[40px] flex items-center gap-[.5em] bg-[#fff] w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
+                                            <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em]bg-[#fff]'} p-[.5em]`}>
+                                                <DeviceRotate className="w-[20px] h-[20px]"/>
+                                                Trocar de Módulo           
+                                            </li>
+                                        </button>
+                                )
+                            }
+
+
                             <button className="flex justify-start gap-[.5em]" onClick={handleLogout}>
-
-                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/academy/settings") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
-
+                                <span className={`h-[40px] flex items-center gap-[.5em] bg-[#fff] w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
                                 <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/academy/settings") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
                                     <SignOut className="w-[20px] h-[20px]"/>
                                     Terminar sessão            
                                 </li>
                             </button>
+
                         </ul>
                     </nav>
                 </div>

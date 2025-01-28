@@ -1,8 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from "sonner"
 import { accessdata } from "../mock/access"
-import { USER_DATA_STORAGE, USER_TOKEN_STORAGE } from "../../utils/storageVariables"
+import { USER_DATA_ROLE, USER_DATA_STORAGE, USER_TOKEN_STORAGE } from "../../utils/storageVariables"
 import { MOCKTOKEN } from "../mock/mocktoken"
+import { useNavigate } from "react-router-dom"
 
 type loginDataInput = {
     login: string,
@@ -25,6 +26,8 @@ type loginDataOutput = {
 export const useLogin = () => {
 
     const [data, setData] = useState<loginDataInput>({login: "", password: ""});
+
+    const navigate = useNavigate();
     
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e?.target;
@@ -68,8 +71,19 @@ export const useLogin = () => {
                 }
 
                 localStorage.setItem(USER_DATA_STORAGE, JSON.stringify(userdata));
+                localStorage.setItem(USER_DATA_ROLE, JSON.stringify(userdata?.role));
                 localStorage.setItem(USER_TOKEN_STORAGE, JSON.stringify(userdata?.token));
 
+                if(userdata?.role == "saler"){
+                    navigate("/sale", {replace: true});
+                } else if(userdata?.role == "stock"){
+                    navigate("/stock", {replace: true});
+                } else {
+                    navigate("/", {replace: true});
+                }
+
+
+                // if()
                 // localStorage.clear();
 
             } else {

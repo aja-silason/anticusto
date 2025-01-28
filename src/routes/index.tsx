@@ -12,12 +12,16 @@ import SupplyManagement from "../modules/stock/page/supply-management";
 import HomeSale from "../modules/sale/page";
 import SupportSale from "../modules/sale/page/support";
 import ClientManagement from "../modules/sale/page/client-management";
+import { ProtectedRouteSaler } from "../common/hook";
 
 
 export function RoutePath () {
     return (
         <Router>
             <Routes>
+
+                <Route path="/master" element={<LoginScreen/>}/>
+
                 <Route path="/" element={<LoginScreen/>}/>
 
                 <Route path="stock" element={<HomeStock/>}/>
@@ -26,7 +30,7 @@ export function RoutePath () {
                 <Route path="stock/settings" element={<Settings/>}/> 
                 <Route path="stock/supplymanagement" element={<SupplyManagement/>}/> 
 
-                <Route path="sale" element={<HomeSale/>}/> 
+                <Route path="sale" element={<ProtectedRouteSaler><HomeSale/></ProtectedRouteSaler>}/> 
                 <Route path="sale/client" element={<ClientManagement/>}/> 
                 <Route path="sale/support" element={<SupportSale/>}/>
                 

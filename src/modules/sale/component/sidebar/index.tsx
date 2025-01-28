@@ -1,11 +1,17 @@
 import {  Airplay, Info, SignOut, Users } from "@phosphor-icons/react"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 export const SideBar = () => {
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     const isActive = (path: string) => location.pathname === path;
+
+    const handleLogout = () => {
+        localStorage?.clear();
+        navigate("/", {replace: true})
+    }
 
     return (
             <div className="bg-[#fff] md:h-[85vh] p-[.5em] rounded-[10px] xl:h-[80vh] sm:h-[80vh] ls:h-[80vh] md:w-[230px]  flex flex-col gap-[2em]">
@@ -67,7 +73,7 @@ export const SideBar = () => {
                                 </li>
                             </Link> */}
 
-                            <Link to="/sale/settings" className="flex justify-start gap-[.5em]">
+                            <button className="flex justify-start gap-[.5em]" onClick={handleLogout}>
 
                                 <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/academy/settings") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
 
@@ -75,7 +81,7 @@ export const SideBar = () => {
                                     <SignOut className="w-[20px] h-[20px]"/>
                                     Terminar sessão            
                                 </li>
-                            </Link>
+                            </button>
                         </ul>
                     </nav>
                 </div>

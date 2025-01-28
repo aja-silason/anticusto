@@ -79,18 +79,13 @@ export const useLogin = () => {
                 } else if(userdata?.role == "stock"){
                     navigate("/stock", {replace: true});
                 } else {
+                    localStorage.clear();
                     navigate("/", {replace: true});
                 }
-
-
-                // if()
-                // localStorage.clear();
 
             } else {
                 throw new Error("Dados de acesso incorretos");
             }
-
-            console.log("Dados de user", payload)
             
         } catch (error: { message: string} | any) {
             // console.log(error?.message);

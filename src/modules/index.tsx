@@ -1,13 +1,12 @@
-import { FormEvent } from "react";
 import { Input, LoginContainer, SubmitButton } from "../common"
 
 import logo from "./../assets/anticost-imagotipo.jpg";
+import { useLogin } from "../common/hook";
 
 export const LoginScreen = () => {
-    const handleSubmit = (e: FormEvent) => {
-        e?.preventDefault();
-        console.log("Cliquei aqui...");
-    }
+
+    const {data, handleChange, handleSubmit} = useLogin();
+
     return (
         <div className="flex justify-center items-center h-[100vh]">
             <LoginContainer>
@@ -15,9 +14,9 @@ export const LoginScreen = () => {
                     <img src={logo} alt="Logo Anticusto System" className="w-[90px]"/>
                     <h2>Preencha os campos abaixo para poder acessar o sistema</h2>
                 </div>
-                <form onSubmit={handleSubmit}>
-                    <Input change={() => {}} label="E-mail ou Telefone" name="email" value={"aa"} key={0}/>
-                    <Input change={() => {}} label="Password" name="password" value="JaJaJ" type="password" key={1}/>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-[1em]">
+                    <Input change={handleChange} label="E-mail ou Telefone" name="login" value={data?.login} key={0}/>
+                    <Input change={handleChange} label="Password" name="password" value={data?.password} type="password" key={1}/>
                     <SubmitButton text="Entrar"/>
                 </form>
 

@@ -18,7 +18,7 @@ export function RoutePath () {
     return (
         <Router>
             <Routes>
-                <Route path="login" element={<LoginScreen/>}/>
+                <Route path="/" element={<LoginScreen/>}/>
 
                 <Route path="stock" element={<HomeStock/>}/>
                 <Route path="stock/stockmanagement" element={<StockManagement/>}/>

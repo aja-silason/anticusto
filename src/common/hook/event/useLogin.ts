@@ -64,7 +64,7 @@ export const useLogin = () => {
                     lastname: "Augusto",
                     address: "Luanda, Viana",
                     telefone: "944996909",
-                    role: "saler",
+                    role: "master",
                     password: undefined,
                     id_store: "saasa-232e-ddae2-23er",
                     token: MOCKTOKEN
@@ -78,6 +78,8 @@ export const useLogin = () => {
                     navigate("/sale", {replace: true});
                 } else if(userdata?.role == "stock"){
                     navigate("/stock", {replace: true});
+                } else if(userdata?.role == "master"){
+                    navigate("/master", {replace: true});
                 } else {
                     localStorage.clear();
                     navigate("/", {replace: true});

@@ -1,2 +1,2 @@
-export { ProtectedRouteSaler, ProtectedRouteStock } from "./auth/ProtectedRoutes";
+export { ProtectedRouteSaler, ProtectedRouteStock, ProtectedRouteMaster } from "./auth/ProtectedRoutes";
 export { useLogin } from "./event/useLogin";

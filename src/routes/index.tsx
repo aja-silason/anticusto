@@ -12,7 +12,8 @@ import SupplyManagement from "../modules/stock/page/supply-management";
 import HomeSale from "../modules/sale/page";
 import SupportSale from "../modules/sale/page/support";
 import ClientManagement from "../modules/sale/page/client-management";
-import { ProtectedRouteSaler, ProtectedRouteStock } from "../common/hook";
+import { ProtectedRouteMaster, ProtectedRouteSaler, ProtectedRouteStock } from "../common/hook";
+import { MasterScreen } from "../modules/allmodule";
 
 
 export function RoutePath () {
@@ -20,7 +21,7 @@ export function RoutePath () {
         <Router>
             <Routes>
 
-                <Route path="/master" element={<LoginScreen/>}/>
+                <Route path="/master" element={<ProtectedRouteMaster><MasterScreen/></ProtectedRouteMaster>}/>
 
                 <Route path="/" element={<LoginScreen/>}/>
 

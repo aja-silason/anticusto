@@ -30,7 +30,7 @@ export const Input = ({value, change, name, label, type}: inputProps) => {
                 {
                     type && (
                         <span className="absolute right-[10px]">
-                            <button onClick={() => handleChangeType()}>
+                            <button type="button" onClick={() => handleChangeType()}>
                                 {
                                     isPassword ? (
                                         <Eye className="w-[20px] h-[20px]"/>

@@ -12,7 +12,7 @@ import SupplyManagement from "../modules/stock/page/supply-management";
 import HomeSale from "../modules/sale/page";
 import SupportSale from "../modules/sale/page/support";
 import ClientManagement from "../modules/sale/page/client-management";
-import { ProtectedRouteMaster, ProtectedRouteSaler, ProtectedRouteStock } from "../common/hook";
+import { ProtectedRouteAdministrator, ProtectedRouteMaster, ProtectedRouteSaler, ProtectedRouteStock } from "../common/hook";
 import { MasterScreen } from "../modules/allmodule";
 import { NotFound } from "../modules/NoteFound.screen";
 import HomeAdm from "../modules/administrator/page";
@@ -37,7 +37,7 @@ export function RoutePath () {
                 <Route path="sale/client" element={<ProtectedRouteSaler><ClientManagement/></ProtectedRouteSaler>}/> 
                 <Route path="sale/support" element={<ProtectedRouteSaler><SupportSale/></ProtectedRouteSaler>}/>
 
-                <Route path="administrator" element={<HomeAdm/>} />
+                <Route path="administrator" element={<ProtectedRouteAdministrator><HomeAdm/></ProtectedRouteAdministrator>} />
 
                 <Route path="*" element={<NotFound/>} />
                 

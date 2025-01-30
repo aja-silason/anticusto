@@ -15,6 +15,7 @@ import ClientManagement from "../modules/sale/page/client-management";
 import { ProtectedRouteMaster, ProtectedRouteSaler, ProtectedRouteStock } from "../common/hook";
 import { MasterScreen } from "../modules/allmodule";
 import { NotFound } from "../modules/NoteFound.screen";
+import HomeAdm from "../modules/administrator/page";
 
 
 export function RoutePath () {
@@ -35,6 +36,8 @@ export function RoutePath () {
                 <Route path="sale" element={<ProtectedRouteSaler><HomeSale/></ProtectedRouteSaler>}/> 
                 <Route path="sale/client" element={<ProtectedRouteSaler><ClientManagement/></ProtectedRouteSaler>}/> 
                 <Route path="sale/support" element={<ProtectedRouteSaler><SupportSale/></ProtectedRouteSaler>}/>
+
+                <Route path="administrator" element={<HomeAdm/>} />
 
                 <Route path="*" element={<NotFound/>} />
                 

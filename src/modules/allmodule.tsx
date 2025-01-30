@@ -1,22 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { USER_DATA_ROLE, USER_MASTER_VERIFY } from "../common/utils/storageVariables"
-import { SwitchModule } from "../common";
+import { acesssType, SwitchModule } from "../common";
 
 export const MasterScreen = () => {
     
     const navigate = useNavigate();
 
+
     const handleSwitchModule = (module: string) => {
+        
         localStorage.setItem(USER_DATA_ROLE, JSON.stringify(module));
         localStorage.setItem(USER_MASTER_VERIFY, JSON.stringify(true));
 
-        if(module == "stock"){
-            navigate("/stock", {replace: true});
-        } else if(module == "saler"){
-            navigate("/sale", {replace: true});
+        if(acesssType[module]){
+            console.log("module", acesssType[module]);
+            navigate(`/${acesssType[module]}`, {replace: true});
         } else {
             navigate("/master", {replace: true});
         }
+
     }
 
     const handleLogout = () => {
@@ -39,7 +41,7 @@ export const MasterScreen = () => {
                     
                     <SwitchModule onClick={() => handleSwitchModule("saler")} text="Venda" isActive/>
 
-                    <SwitchModule onClick={() => handleSwitchModule("administrator")} text="Administrador" />
+                    <SwitchModule onClick={() => handleSwitchModule("administrator")} text="Administrador" isActive/>
                     
                     <SwitchModule onClick={() => handleSwitchModule("finantial")} text="Gestão de Financeira" />
 

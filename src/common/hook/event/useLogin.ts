@@ -4,6 +4,7 @@ import { accessdata } from "../mock/access"
 import { USER_DATA_ROLE, USER_DATA_STORAGE, USER_TOKEN_STORAGE } from "../../utils/storageVariables"
 import { MOCKTOKEN } from "../mock/mocktoken"
 import { useNavigate } from "react-router-dom"
+import { acesssType } from "../../utils/acessAuth"
 
 type loginDataInput = {
     login: string,
@@ -36,6 +37,7 @@ export const useLogin = () => {
         }));
     }
 
+
     const handleSubmit = (e: FormEvent) => {
         e?.preventDefault();
 
@@ -64,7 +66,7 @@ export const useLogin = () => {
                     lastname: "Augusto",
                     address: "Luanda, Viana",
                     telefone: "944996909",
-                    role: "master",
+                    role: "administrator",
                     password: undefined,
                     id_store: "saasa-232e-ddae2-23er",
                     token: MOCKTOKEN
@@ -74,12 +76,8 @@ export const useLogin = () => {
                 localStorage.setItem(USER_DATA_ROLE, JSON.stringify(userdata?.role));
                 localStorage.setItem(USER_TOKEN_STORAGE, JSON.stringify(userdata?.token));
 
-                if(userdata?.role == "saler"){
-                    navigate("/sale", {replace: true});
-                } else if(userdata?.role == "stock"){
-                    navigate("/stock", {replace: true});
-                } else if(userdata?.role == "master"){
-                    navigate("/master", {replace: true});
+                if(acesssType[userdata?.role]){
+                    navigate(`${acesssType[userdata?.role]}`, {replace: true});
                 } else {
                     localStorage.clear();
                     navigate("/", {replace: true});

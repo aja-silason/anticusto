@@ -34,7 +34,7 @@ const mockrowsMonth = [
 export default function HomeAdm() {
 
     return (
-        <Container title="Posto de venda">
+        <Container title="Dashboard">
             <div className="flex gap-[.5em] justify-between">
 
                 <Card quantity={mockrowsDay?.length ?? 0} value={totalMockDay} title="Venda diária" icon={<Barcode className="w-[2em] h-[2em] text-[#264A7D]" />} />

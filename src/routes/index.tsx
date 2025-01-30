@@ -16,6 +16,8 @@ import { ProtectedRouteAdministrator, ProtectedRouteMaster, ProtectedRouteSaler,
 import { MasterScreen } from "../modules/allmodule";
 import { NotFound } from "../modules/NoteFound.screen";
 import HomeAdm from "../modules/administrator/page";
+import UserManagement from "../modules/administrator/page/user-management";
+import SupportAdministrator from "../modules/administrator/page/support";
 
 
 export function RoutePath () {
@@ -38,6 +40,8 @@ export function RoutePath () {
                 <Route path="sale/support" element={<ProtectedRouteSaler><SupportSale/></ProtectedRouteSaler>}/>
 
                 <Route path="administrator" element={<ProtectedRouteAdministrator><HomeAdm/></ProtectedRouteAdministrator>} />
+                <Route path="administrator/user" element={<ProtectedRouteAdministrator><UserManagement/></ProtectedRouteAdministrator>} />
+                <Route path="administrator/support" element={<ProtectedRouteAdministrator><SupportAdministrator/></ProtectedRouteAdministrator>} />
 
                 <Route path="*" element={<NotFound/>} />
                 

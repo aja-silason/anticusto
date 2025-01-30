@@ -13,7 +13,6 @@ export const MasterScreen = () => {
         localStorage.setItem(USER_MASTER_VERIFY, JSON.stringify(true));
 
         if(acesssType[module]){
-            console.log("module", acesssType[module]);
             navigate(`/${acesssType[module]}`, {replace: true});
         } else {
             navigate("/master", {replace: true});

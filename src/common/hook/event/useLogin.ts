@@ -66,7 +66,7 @@ export const useLogin = () => {
                     lastname: "Augusto",
                     address: "Luanda, Viana",
                     telefone: "944996909",
-                    role: "administrator",
+                    role: "master",
                     password: undefined,
                     id_store: "saasa-232e-ddae2-23er",
                     token: MOCKTOKEN

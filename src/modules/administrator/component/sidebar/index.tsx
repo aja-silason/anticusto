@@ -51,6 +51,15 @@ export const SideBar = () => {
                                 </li>
                             </Link>
 
+                            <Link to="/administrator/role" className="flex justify-start gap-[.5em]">
+                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/administrator/role") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
+                                
+                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/administrator/role") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
+                                    <Users className="w-[20px] h-[20px]"/>
+                                    Nível de acesso          
+                                </li>
+                            </Link>
+
                         </ul>
                     </nav>
                 </div>

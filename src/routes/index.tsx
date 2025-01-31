@@ -18,6 +18,7 @@ import { NotFound } from "../modules/NoteFound.screen";
 import HomeAdm from "../modules/administrator/page";
 import UserManagement from "../modules/administrator/page/user-management";
 import SupportAdministrator from "../modules/administrator/page/support";
+import RoleManagement from "../modules/administrator/page/role-management";
 
 
 export function RoutePath () {
@@ -42,7 +43,8 @@ export function RoutePath () {
                 <Route path="administrator" element={<ProtectedRouteAdministrator><HomeAdm/></ProtectedRouteAdministrator>} />
                 <Route path="administrator/user" element={<ProtectedRouteAdministrator><UserManagement/></ProtectedRouteAdministrator>} />
                 <Route path="administrator/support" element={<ProtectedRouteAdministrator><SupportAdministrator/></ProtectedRouteAdministrator>} />
-
+                <Route path="administrator/role" element={<ProtectedRouteAdministrator><RoleManagement/></ProtectedRouteAdministrator>} />
+                
                 <Route path="*" element={<NotFound/>} />
                 
 

@@ -23,13 +23,6 @@ const mockrowsMonth = [
 
   const allSale = mockrowsDay.concat(mockrowsWeek).concat(mockrowsMonth);
 
-  const totalMockDay = mockrowsDay.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
-
-  const totalMockWeek = mockrowsWeek.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
-
-  const totalMockMonth = mockrowsMonth.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
-
-
 
 export default function HomeAdm() {
 
@@ -37,11 +30,11 @@ export default function HomeAdm() {
         <Container title="Dashboard">
             <div className="flex gap-[.5em] justify-between">
 
-                <Card quantity={mockrowsDay?.length ?? 0} value={totalMockDay} title="Venda diária" icon={<Barcode className="w-[2em] h-[2em] text-[#264A7D]" />} />
+                <Card quantity={mockrowsDay?.length ?? 0} title="Usuários" icon={<Barcode className="w-[2em] h-[2em] text-[#264A7D]" />} />
                 
-                <Card quantity={mockrowsWeek?.length ?? 0} value={totalMockWeek} title="Venda Semanal" icon={<MoneyWavy className="w-[2em] h-[2em] text-[#264A7D]" />} />
+                <Card quantity={mockrowsWeek?.length ?? 0} title="Módulos" icon={<MoneyWavy className="w-[2em] h-[2em] text-[#264A7D]" />} />
                 
-                <Card quantity={mockrowsMonth?.length ?? 0} value={totalMockMonth} title="Venda mensal" icon={<Money className="w-[2em] h-[2em] text-[#264A7D]" />} />
+                <Card quantity={mockrowsMonth?.length ?? 0} title="Módulos activos" icon={<Money className="w-[2em] h-[2em] text-[#264A7D]" />} />
                 
             </div>
 

@@ -15,7 +15,7 @@ export const LoginScreen = () => {
                     <h2>Preencha os campos abaixo para poder acessar o sistema</h2>
                 </div>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-[1em]">
-                    <Input change={handleChange} label="E-mail ou Telefone" name="login" value={data?.login} key={0}/>
+                    <Input change={handleChange} label="E-mail ou Telefone" name="telephone" value={data?.telephone} key={0}/>
                     <Input change={handleChange} label="Password" name="password" value={data?.password} type="password" key={1}/>
                     <SubmitButton text="Entrar"/>
                 </form>

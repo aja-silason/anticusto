@@ -5,9 +5,10 @@ import { USER_DATA_ROLE, USER_DATA_STORAGE, USER_TOKEN_STORAGE } from "../../uti
 import { MOCKTOKEN } from "../mock/mocktoken"
 import { useNavigate } from "react-router-dom"
 import { acesssType } from "../../utils/acessAuth"
+import axios, { Axios } from "axios";
 
 type loginDataInput = {
-    login: string,
+    telephone: string,
     password: string
 }
 
@@ -26,7 +27,7 @@ type loginDataOutput = {
 
 export const useLogin = () => {
 
-    const [data, setData] = useState<loginDataInput>({login: "", password: ""});
+    const [data, setData] = useState<loginDataInput>({telephone: "", password: ""});
 
     const navigate = useNavigate();
     
@@ -38,54 +39,45 @@ export const useLogin = () => {
     }
 
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e?.preventDefault();
 
         try {
 
             const payload: loginDataInput = {
-                login: data?.login,
+                telephone: data?.telephone,
                 password: data?.password
             } 
 
-            const isValidate: Array<keyof loginDataInput> = ["login", "password"];
+            const isValidate: Array<keyof loginDataInput> = ["telephone", "password"];
             for(const key of isValidate){
                 if(payload[key] == undefined || payload[key] == null || payload[key] == "".trim()){
-                    toast.info(`${key == "login" ? 'email ou telefone' : 'senha'} precisa ser verificado`);
+                    toast.info(`${key == "telephone" ? 'email ou telefone' : 'senha'} precisa ser verificado`);
                     return;
                 }
             }
 
-            //o endpoint de login vai aqui...
+            const apiUrl = import.meta.env.VITE_API_URL;
 
-            if(payload?.login == accessdata?.login && payload?.password == accessdata?.password){
-                const userdata: loginDataOutput = {
-                    id: "wewe-121w-232d-232e-323e",
-                    username: "ananiaaugusto",
-                    firstname: "Anania",
-                    lastname: "Augusto",
-                    address: "Luanda, Viana",
-                    telefone: "944996909",
-                    role: "master",
-                    password: undefined,
-                    id_store: "saasa-232e-ddae2-23er",
-                    token: MOCKTOKEN
-                }
+            const userdata = await axios.post(`${apiUrl}login`, payload);
 
-                localStorage.setItem(USER_DATA_STORAGE, JSON.stringify(userdata));
-                localStorage.setItem(USER_DATA_ROLE, JSON.stringify(userdata?.role));
-                localStorage.setItem(USER_TOKEN_STORAGE, JSON.stringify(userdata?.token));
+            const datas = userdata.data;
 
-                if(acesssType[userdata?.role]){
-                    navigate(`${acesssType[userdata?.role]}`, {replace: true});
-                } else {
-                    localStorage.clear();
-                    navigate("/", {replace: true});
-                }
+            console.log("Logou", datas);
+            console.log("Logou", datas.login.access.nivel_de_acesso);
+            console.log("Logou", datas.token);
 
+            localStorage.setItem(USER_DATA_STORAGE, JSON.stringify(datas));
+            localStorage.setItem(USER_DATA_ROLE, JSON.stringify(datas.login.access.nivel_de_acesso));
+            localStorage.setItem(USER_TOKEN_STORAGE, JSON.stringify(datas.token));
+
+            if(acesssType[datas.login.access.nivel_de_acesso]){
+                navigate(`${acesssType[datas.login.access.nivel_de_acesso]}`, {replace: true});
             } else {
-                throw new Error("Dados de acesso incorretos");
+                localStorage.clear();
+                navigate("/", {replace: true});
             }
+
             
         } catch (error: { message: string} | any) {
             // console.log(error?.message);

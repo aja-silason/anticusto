@@ -7,7 +7,7 @@ export const MasterScreen = () => {
     
     const navigate = useNavigate();
 
-    const {data, error} = useGetdata("store");
+    const {data} = useGetdata("store");
 
     console.log("Data", data);
 

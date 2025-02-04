@@ -1,10 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { USER_DATA_ROLE, USER_MASTER_VERIFY } from "../common/utils/storageVariables"
 import { acesssType, SwitchModule } from "../common";
+import { useGetdata } from "../common/hook/get/useGetdata";
 
 export const MasterScreen = () => {
     
     const navigate = useNavigate();
+
+    const {data, error} = useGetdata("store");
+
+    console.log("Data", data);
 
 
     const handleSwitchModule = (module: string) => {

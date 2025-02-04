@@ -1,28 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from "sonner"
-import { accessdata } from "../mock/access"
 import { USER_DATA_ROLE, USER_DATA_STORAGE, USER_TOKEN_STORAGE } from "../../utils/storageVariables"
-import { MOCKTOKEN } from "../mock/mocktoken"
 import { useNavigate } from "react-router-dom"
 import { acesssType } from "../../utils/acessAuth"
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 type loginDataInput = {
     telephone: string,
     password: string
-}
-
-type loginDataOutput = {
-    username: string,
-    firstname: string,
-    lastname: string,
-    telefone: string,
-    role: string,
-    address: string,
-    id: string,
-    id_store: string,
-    password?: string,
-    token: string
 }
 
 export const useLogin = () => {

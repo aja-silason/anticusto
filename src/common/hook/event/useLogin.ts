@@ -48,10 +48,6 @@ export const useLogin = () => {
 
             const datas = userdata.data;
 
-            console.log("Logou", datas);
-            console.log("Logou", datas.login.access.nivel_de_acesso);
-            console.log("Logou", datas.token);
-
             localStorage.setItem(USER_DATA_STORAGE, JSON.stringify(datas));
             localStorage.setItem(USER_DATA_ROLE, JSON.stringify(datas.login.access.nivel_de_acesso));
             localStorage.setItem(USER_TOKEN_STORAGE, JSON.stringify(datas.token));
@@ -65,7 +61,6 @@ export const useLogin = () => {
 
             
         } catch (error: { message: string} | any) {
-            // console.log(error?.message);
             error?.message == "Dados de acesso incorretos" ? toast.error("Dados de acesso incorretos", { duration: 2000}) : toast.error("Erro ao fazer o login", { duration: 2000});
         }
 

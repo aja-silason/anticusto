@@ -44,7 +44,7 @@ export const useLogin = () => {
 
             const apiUrl = import.meta.env.VITE_API_URL;
 
-            const userdata = await axios.post(`${apiUrl}login`, payload);
+            const userdata = await axios.post(`${apiUrl}/login`, payload);
 
             const datas = userdata.data;
 

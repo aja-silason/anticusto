@@ -37,7 +37,7 @@ export const useCreateClient = (handleClose: VoidFunction) => {
                 id_access_role: data?.id_access_role
             }
 
-            await axios.post(`${apiURL}user`, payload);
+            await axios.post(`${apiURL}/user`, payload);
             
             toast.success("Usuário registrado.", {duration: 3000});
             handleClose();

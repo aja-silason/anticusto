@@ -31,7 +31,7 @@ export const useCreateAccessRole = (handleClose: VoidFunction) => {
                 access_role: data?.access_role
             }
 
-            await axios.post(`${apiURL}access-role`, payload);
+            await axios.post(`${apiURL}/access-role`, payload);
             
             toast.success("Nível de acesso registrado.", {duration: 3000});
             

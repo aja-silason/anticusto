@@ -11,7 +11,7 @@ export const useGetdata = (endpoint: string) => {
         return data;
     }
 
-    const {data, error} = useSWR(`${apiURL}${endpoint}`, fetch);
+    const {data, error} = useSWR(`${apiURL}/${endpoint}`, fetch);
 
     return {data, error}
 

@@ -103,7 +103,7 @@ export default function UserModal() {
                     </select>
                   </div>
                 
-                <SubmitButton text='Registrar Cliente'/>
+                <SubmitButton text='Registrar Usuário'/>
 
             </form>
           

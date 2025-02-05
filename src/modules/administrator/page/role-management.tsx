@@ -18,7 +18,7 @@ export default function RoleManagement () {
     return (
         <Container title="Nível de acesso">
             
-            <Card quantity={supplyData?.length ?? 0} title="Nível de acesso" icon={<Users className="w-[2em] h-[2em] text-[#264A7D]" />} />
+            <Card quantity={data?.length ?? 0} title="Nível de acesso" icon={<Users className="w-[2em] h-[2em] text-[#264A7D]" />} />
 
             <div className="bg-[#fff] md:w-[100%] md:h-[100%] rounded-[.5em] p-[.5em]">
                 <RoleTable data={data} title="Nivel de acesso"/>

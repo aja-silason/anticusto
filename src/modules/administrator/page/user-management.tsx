@@ -24,7 +24,7 @@ export default function UserManagement () {
             <Card quantity={data?.length ?? 0} title="Usuários" icon={<Users className="w-[2em] h-[2em] text-[#264A7D]" />} />
 
             <div className="bg-[#fff] md:w-[100%] md:h-[100%] rounded-[.5em] p-[.5em]">
-                <UserTable data={data} title="Fornecedores Encontrados"/>
+                <UserTable data={data} title="Usuários"/>
             </div>
         </Container>
     )

@@ -1,18 +1,17 @@
+import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from "sonner";
 
 type saleProps = {
-    client: string,
-    bi: string,
-    email: string,
-    address: string,
-    civilState: string,
-    phone: string,
+    username: string,
+    password: string,
+    id_employer: string,
+    id_access_role: string,
 }
 
-export const useCreateClient = () => {
+export const useCreateClient = (handleClose: VoidFunction) => {
     
-    const [data, setData] = useState<saleProps>({client: "", phone: "", bi: "", civilState: "", email: "", address: ""});
+    const [data, setData] = useState<saleProps>({username: "", password: "", id_access_role: "", id_employer: ""});
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | any>) => {
         const {name, value} = e?.target;
@@ -22,6 +21,9 @@ export const useCreateClient = () => {
         }));
     }
 
+
+    const apiURL = import.meta.env.VITE_API_URL;
+
     const handleSubmit = async (e: FormEvent) => {
 
         e?.preventDefault();
@@ -29,20 +31,22 @@ export const useCreateClient = () => {
         try {
             
             const payload: saleProps = {
-                client: data?.client,
-                phone: data?.phone,
-                bi: data?.bi,
-                civilState: data?.civilState,
-                email: data?.email,
-                address: data?.address
+                username: data?.username,
+                password: data?.password,
+                id_employer: data?.id_employer,
+                id_access_role: data?.id_access_role
             }
 
-            console.log("payload", payload);
+            await axios.post(`${apiURL}user`, payload);
             
-            toast.success("venda realizada com sucesso", {duration: 3000});
+            toast.success("Usuário registrado.", {duration: 3000});
+            handleClose();
 
-        } catch (error) {
-            toast.error("Impossivle processar a compra", {duration: 3000});
+        } catch (error: any) {
+
+            toast.error(`${error.response.data.message == "User already exist" && "Usuário já existe e foi adicionado a este funcionario"}`, {duration: 3000});
+            handleClose();
+
         }
 
     }

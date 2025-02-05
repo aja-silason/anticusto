@@ -1,5 +1,6 @@
 import { Users } from "@phosphor-icons/react"
-import { Container, Card, ClientTable  } from "../component"
+import { Container, Card, RoleTable  } from "../component"
+import { useGetdata } from "../../../common/hook/get/useGetdata"
 
 export const supplyData = [
     {client: "Adão Nunda", bi: "0009876546LL09", phone: "944996909"},
@@ -12,13 +13,15 @@ export const supplyData = [
 
 export default function RoleManagement () {
 
+    const {data} = useGetdata("access-role");
+
     return (
         <Container title="Nível de acesso">
             
             <Card quantity={supplyData?.length ?? 0} title="Nível de acesso" icon={<Users className="w-[2em] h-[2em] text-[#264A7D]" />} />
 
             <div className="bg-[#fff] md:w-[100%] md:h-[100%] rounded-[.5em] p-[.5em]">
-                <ClientTable data={supplyData} title="Nivel de acesso"/>
+                <RoleTable data={data} title="Nivel de acesso"/>
             </div>
         </Container>
     )

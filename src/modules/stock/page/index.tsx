@@ -1,27 +1,6 @@
 import { Gear } from "@phosphor-icons/react";
 import { Container, Card, ProductTable, SupplyTable } from "../component";
-import { supplyProps } from "../hook/create/supply";
 import { useGetdata } from "../../../common/hook/get/useGetdata";
-
-export const rows = [
-    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
-    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
-    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
-    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mel", price: "12,99 kz", dataOfExpire: "2025-02-25" },
-    { product: "Pão", price: "50,00 kz", dataOfExpire: "2025-02-25" },
-    { product: "Mentol", price: "20,00 kz", dataOfExpire: "2025-02-25" },
-  ];
-
-export const supplyData: supplyProps[] = [
-    {supply: "Honey Store", product: "Mel"},
-    {supply: "Honey Store", product: "Mel"},
-  ]
 
 export default function HomeStock() {
 

@@ -28,13 +28,12 @@ export default function SupplyModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateSupply();
+  const {data, handleChange, handleSubmit} = useCreateSupply(handleClose);
 
   return (
     
     <div>
 
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <ModalButton onClick={handleOpen} text="Registrar Fornecedor"/>
       
       <Modal
@@ -66,9 +65,11 @@ export default function SupplyModal() {
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-[.5em] justify-center items-center'>
 
-                <Input label='Fornecedor' value={data?.supply} change={handleChange} name='supply'/>
+                <Input label='Fornecedor' value={data?.nome} change={handleChange} name='nome'/>
               
-                <Input label='Producto' value={data?.product} change={handleChange} name='product'/>
+                <Input label='Telefone' type='number' value={data?.telefone} change={handleChange} name='telefone'/>
+                
+                <Input label='NIF' value={data?.nif} change={handleChange} name='nif'/>
               
                 <SubmitButton text='Registrar'/>
 

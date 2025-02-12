@@ -47,10 +47,10 @@ export const useCreateUser = (handleClose: VoidFunction) => {
             handleClose();
 
         } catch (error: any) {
-
             toast.error(`${error.response.data.message == "User already exist" && "Usuário já existe e foi adicionado a este funcionario"}`, {duration: 3000});
+        } finally{
+            setData({username: "", id_access_role: "", id_employer: "", password: ""})
             handleClose();
-
         }
 
     }

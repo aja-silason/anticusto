@@ -19,19 +19,15 @@ type tableProps = {
 
 export const ProductTable = ({data, title}: tableProps) => {
 
-  const dinheiro = useMoneyConvert(10000);
-
-  console.log("Dinheiro", dinheiro);
-
   const rowsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
   const renderTable = () => {
     const startIdx = (currentPage - 1) * rowsPerPage;
     const endIdx = startIdx + rowsPerPage;
-    const paginatedRows = data.slice(startIdx, endIdx);
+    const paginatedRows = data?.slice(startIdx, endIdx);
 
-    return paginatedRows.map((data, index) => (
+    return paginatedRows?.map((data, index) => (
 
       <tr key={index} className="border-t border-b">
         <td className="px-4 py-2">{data?.produto?.nome}</td>
@@ -56,7 +52,7 @@ export const ProductTable = ({data, title}: tableProps) => {
 
   const location = useLocation();
 
-  const isInMainScreen = (path: string) => location.pathname === path; 
+  const isInMainScreen = (path: string) => location?.pathname === path; 
 
   return (
     <div className="container flex flex-col h-[100%] justify-start gap-[1em] border rounded-t-[10px] mx-auto p-4">
@@ -100,10 +96,10 @@ export const ProductTable = ({data, title}: tableProps) => {
         </button>
         <button 
           onClick={handleNextPage} 
-          className={`p-[.4em] mx-2 rounded ${currentPage * rowsPerPage >= data.length ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
-          disabled={currentPage * rowsPerPage >= data.length}
+          className={`p-[.4em] mx-2 rounded ${currentPage * rowsPerPage >= data?.length ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
+          disabled={currentPage * rowsPerPage >= data?.length}
         >
-          <CaretDoubleRight className={`w-[20px] h-[20px] ${currentPage * rowsPerPage >= data.length ? 'text-[#000] cursor-not-allowed' : "text-[#fff]"} `}/>
+          <CaretDoubleRight className={`w-[20px] h-[20px] ${currentPage * rowsPerPage >= data?.length ? 'text-[#000] cursor-not-allowed' : "text-[#fff]"} `}/>
         </button>
       </div>
     </div>

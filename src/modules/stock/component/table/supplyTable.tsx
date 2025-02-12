@@ -1,7 +1,6 @@
 import { CaretDoubleLeft, CaretDoubleRight, Trash } from '@phosphor-icons/react';
 import { useState } from 'react';
 import SupplyModal from '../modal/supply-modal';
-import { supplyData } from '../../page/supply-management';
 import { useLocation } from 'react-router-dom';
 
 type tableProps = {
@@ -25,14 +24,7 @@ export const SupplyTable = ({data, title}: tableProps) => {
     const paginatedRows = data?.slice(startIdx, endIdx);
 
     const handleDelete = (i: number) => {
-      // supplyData.pop();
-      // ...supplyData
-
-      const ap = supplyData?.filter((item) => item?.id !== i);
-
-      return ap;
-
-
+      console.log("Clicou para deletar", i);
     }
 
     return paginatedRows?.map((data, index) => (
@@ -69,7 +61,7 @@ export const SupplyTable = ({data, title}: tableProps) => {
 
   const location = useLocation();
 
-  const isInIndex = (path: string) => location.pathname === path;
+  const isInIndex = (path: string) => location?.pathname === path;
 
   return (
     <div className="container flex flex-col h-[100%] justify-start gap-[1em] border rounded-t-[10px] mx-auto p-4">

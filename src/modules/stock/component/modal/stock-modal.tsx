@@ -6,6 +6,7 @@ import { Input } from '../input/input';
 import { SubmitButton } from '../button/submitButton';
 import { ModalButton } from '../button/ModalButton';
 import { useCreateStock } from '../../hook';
+import { useGetdata } from '../../../../common/hook/get/useGetdata';
 
 const style = {
   position: 'absolute',
@@ -28,7 +29,9 @@ export default function StockModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateStock();
+  const {data, handleChange, handleSubmit} = useCreateStock(handleClose);
+
+  const {data: product} = useGetdata("product");
 
   return (
     
@@ -53,7 +56,7 @@ export default function StockModal() {
 
             <div className='flex justify-between'>
 
-              <h3>Registrar Producto no Estoque</h3>
+              <h3>Alocar Producto no Estoque</h3>
               
               <button onClick={handleClose}>
                   
@@ -65,12 +68,22 @@ export default function StockModal() {
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-[.5em] justify-center items-center'>
 
-                <Input label='Producto' value={data?.product} change={handleChange} name='product'/>
+                <Input label='Quantidade' type='number' value={data?.quantity} change={handleChange} name='quantity'/>
               
-                <Input label='Preço' value={data?.price} change={handleChange} name='price'/>
+                <div className="flex flex-col gap-[.5em] w-[100%]">
+                  <label htmlFor={product} className="text-[11pt]">Producto</label>
+                    <select name="id_product" id="id_product" value={data?.id_product} onChange={handleChange} className="border cursor-pointer border-[#ccc] rounded-[5px] p-[.5em] w-[100%]">
+                      <option></option>
+                      {
+                        product && product?.map((item: any) => {
+                          return (
+                            <option id='id_product' value={item?.id} onChange={handleChange}>{item?.nome}</option>
+                          )
+                        })
+                      }
+                    </select>
+                </div>
 
-                <Input label='Data de validade' type='date' value={data?.dateOfExpire} change={handleChange} name='dateOfExpire'/>
-              
                 <SubmitButton text='Registrar'/>
 
             </form>

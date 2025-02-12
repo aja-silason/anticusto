@@ -1,18 +1,19 @@
+import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from "sonner";
+import { mutate } from "swr";
 
 export type stockProps = {
-    product: string
-    price: number,
-    dateOfExpire: string
+    id_product: string
+    quantity: string
 }
 
 
 
-export const useCreateStock = () => {
+export const useCreateStock = (handleClose: VoidFunction) => {
 
 
-    const [data, setData] = useState<stockProps>({product: "", price: 0 ,dateOfExpire: ""});
+    const [data, setData] = useState<stockProps>({id_product: "", quantity: ""});
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | any>) => {
         const {value, name} = e?.target;
@@ -23,26 +24,41 @@ export const useCreateStock = () => {
     }
 
     const handleSubmit = async (e: FormEvent) => {
+
+        const api_url = import.meta.env.VITE_API_URL;
         
         e?.preventDefault();
         
         try {
 
             const payload: stockProps = {
-                product: data?.product,
-                price: data?.price,
-                dateOfExpire: data?.dateOfExpire
+                id_product: data?.id_product,
+                quantity: data?.id_product
             }
 
-            console.log("Lista", payload);
+            const isValidate: Array<keyof stockProps> = ["id_product", "quantity"];
+            for(const key of isValidate){
+                if(payload[key] == undefined || payload[key] == null) {
+                    toast.warning(`${key} precisa ser verificado`, {duration: 3000});
+                    return;
+                }
+            }
 
-            toast.success("Producto Adicionado com sucesso no stock", {duration: 3000});
-
-
-        } catch (error) {
+            await axios.post(`${api_url}/stock`, payload);
             
-            console.log(error);
+            mutate((prevState: any) => [
+                {...prevState}, payload
+            ]);
+            toast.success("Producto Adicionado com sucesso no stock", {duration: 3000});
+            
+            handleClose();
+        } catch (error) {
 
+            toast.error("Producto não Adicionado no stock", {duration: 3000});
+            
+        } finally{
+            setData({id_product: "", quantity: ""});
+            handleClose();
         }
 
     }

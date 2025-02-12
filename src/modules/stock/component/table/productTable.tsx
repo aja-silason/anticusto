@@ -2,18 +2,26 @@ import { CaretDoubleLeft, CaretDoubleRight } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import StockModal from '../modal/stock-modal';
+import { useMoneyConvert } from '../../../../common/hook/useMoneyConvert';
 
 type tableProps = {
     data: {
-        product: string,
-        price: string,
-        dataOfExpire: string,
+      produto: {
+        nome: string,
+        preco: number,
+        descricao: string,
+      },
+      quantidade: string,
 
     }[],
     title: string, 
 }
 
 export const ProductTable = ({data, title}: tableProps) => {
+
+  const dinheiro = useMoneyConvert(10000);
+
+  console.log("Dinheiro", dinheiro);
 
   const rowsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,10 +32,12 @@ export const ProductTable = ({data, title}: tableProps) => {
     const paginatedRows = data.slice(startIdx, endIdx);
 
     return paginatedRows.map((data, index) => (
+
       <tr key={index} className="border-t border-b">
-        <td className="px-4 py-2">{data.product}</td>
-        <td className="px-4 py-2">{data.price}</td>
-        <td className="px-4 py-2">{data.dataOfExpire}</td>
+        <td className="px-4 py-2">{data?.produto?.nome}</td>
+        <td className="px-4 py-2">{useMoneyConvert(+data?.produto?.preco)}</td>
+        <td className="px-4 py-2">{data?.quantidade}</td>
+        <td className="px-4 py-2">{data?.produto?.descricao}</td>
       </tr>
     ));
   };
@@ -67,7 +77,8 @@ export const ProductTable = ({data, title}: tableProps) => {
                 <tr className='text-left border text-[14px] font-[700] text-[#727272] bg-[#F9F9F9] rounded-t-[10px]'>
                     <th className="px-[.5em] py-2">Nome do Produto</th>
                     <th className="px-[.5em] py-2">Preço</th>
-                    <th className="px-[.5em] py-2">Data de validade</th>
+                    <th className="px-[.5em] py-2">Quatidade</th>
+                    <th className="px-[.5em] py-2">Descrição</th>
                 </tr>
 
                 </thead>

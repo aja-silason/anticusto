@@ -6,8 +6,9 @@ import { useLocation } from 'react-router-dom';
 
 type tableProps = {
     data: {
-        supply: string,
-        product: string,
+        nome: string,
+        telefone: string,
+        nif: string,
 
     }[],
     title: string, 
@@ -36,8 +37,9 @@ export const SupplyTable = ({data, title}: tableProps) => {
 
     return paginatedRows?.map((data, index) => (
       <tr key={index} className="border-t border-b">
-        <td className="px-4 py-2">{data.supply}</td>
-        <td className="px-4 py-2">{data.product}</td>
+        <td className="px-4 py-2">{data.nome}</td>
+        <td className="px-4 py-2">{data.telefone}</td>
+        <td className="px-4 py-2">{data.nif}</td>
         <td className="text-center px-[-4em] py-2">
 
         {
@@ -86,8 +88,8 @@ export const SupplyTable = ({data, title}: tableProps) => {
                 <thead className="bg-brown-600] border rounded-[100px]">
                 <tr className='text-left border text-[14px] font-[700] text-[#727272] bg-[#F9F9F9] rounded-t-[10px]'>
                     <th className="px-[.5em] py-2">Fornecedor</th>
-                    <th className="px-[.5em] py-2">Produto</th>
-                    <th className="px-[.5em] py-2"></th>
+                    <th className="px-[.5em] py-2">Contacto</th>
+                    <th className="px-[.5em] py-2">NIF</th>
                 </tr>
 
                 </thead>

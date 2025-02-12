@@ -6,8 +6,6 @@ export default function EmployerManagement () {
     
     const {data} = useGetdata("employer");
     
-    console.log(data);
-
     return (
         <Container title="Usuário">
             

@@ -5,7 +5,7 @@ import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
 import { SubmitButton } from '../button/submitButton';
 import { ModalButton } from '../button/ModalButton';
-import { useCreateClient } from '../../hook';
+import { useCreateUser } from '../../hook';
 import { useGetdata } from '../../../../common/hook/get/useGetdata';
 
 const style = {
@@ -31,7 +31,7 @@ export default function UserModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateClient(handleClose);
+  const {data, handleChange, handleSubmit} = useCreateUser(handleClose);
   
   const {data: accessRole} = useGetdata("access-role")
   const {data: employer} = useGetdata("employer")

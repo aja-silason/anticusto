@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from "sonner";
+import { mutate } from "swr";
 
 type saleProps = {
     username: string,
@@ -9,7 +10,7 @@ type saleProps = {
     id_access_role: string,
 }
 
-export const useCreateClient = (handleClose: VoidFunction) => {
+export const useCreateUser = (handleClose: VoidFunction) => {
     
     const [data, setData] = useState<saleProps>({username: "", password: "", id_access_role: "", id_employer: ""});
 
@@ -38,6 +39,9 @@ export const useCreateClient = (handleClose: VoidFunction) => {
             }
 
             await axios.post(`${apiURL}/user`, payload);
+            mutate((prevState: any) => [
+                {...prevState}, payload
+            ])
             
             toast.success("Usuário registrado.", {duration: 3000});
             handleClose();

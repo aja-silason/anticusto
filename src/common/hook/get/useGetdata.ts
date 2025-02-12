@@ -7,7 +7,7 @@ export const useGetdata = (endpoint: string) => {
 
     const fetch = async (url: string) => {
         const {data} = await axios.get(url);
-        console.log("Outro", data);
+        
         return data;
     }
 

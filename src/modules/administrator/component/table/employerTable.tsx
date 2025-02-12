@@ -1,7 +1,7 @@
 import { CaretDoubleLeft, CaretDoubleRight } from '@phosphor-icons/react';
 import { useState } from 'react';
-import UserModal from '../modal/user-modal';
 import { useLocation } from 'react-router-dom';
+import EmployerModal from '../modal/employer-modal';
 
 type tableProps = {
     data: {
@@ -56,7 +56,7 @@ export const EmployerTable = ({data, title}: tableProps) => {
       <div className='flex justify-between items-center'>
         <h2 className="text-[#264A7D] font-[400] text-[16px]">{title}</h2>
         
-        { isHere("/administrator/user") && <UserModal/> }
+        { isHere("/administrator/employer") && <EmployerModal/> }
 
       </div>
         

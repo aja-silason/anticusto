@@ -33,7 +33,7 @@ export const useCreateStock = (handleClose: VoidFunction) => {
 
             const payload: stockProps = {
                 id_product: data?.id_product,
-                quantity: data?.id_product
+                quantity: data?.quantity
             }
 
             const isValidate: Array<keyof stockProps> = ["id_product", "quantity"];

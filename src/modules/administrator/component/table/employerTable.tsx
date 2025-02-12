@@ -5,20 +5,16 @@ import { useLocation } from 'react-router-dom';
 
 type tableProps = {
     data: {
-        username: string, 
-        employer: {
-          bi: string
-          telefone: string,
-          email: string
-        },
-        access_role: {
-          nivel_de_acesso: string
-        }
+      firstName: string,
+      lastName: string,
+      email: string,
+      telephone: string,
+      bi: string,
     }[],
     title: string, 
 }
 
-export const UserTable = ({data, title}: tableProps) => {
+export const EmployerTable = ({data, title}: tableProps) => {
 
   const rowsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,11 +27,11 @@ export const UserTable = ({data, title}: tableProps) => {
 
     return paginatedRows?.map((data, index) => (
       <tr key={index} className="border-t border-b">
-        <td className="px-4 py-2">{data?.username}</td>
-        <td className="px-4 py-2">{data?.employer?.bi}</td>
-        <td className="px-4 py-2">{data?.employer?.telefone}</td>
-        <td className="px-4 py-2">{data?.employer?.email}</td>
-        <td className="px-4 py-2">{data?.access_role?.nivel_de_acesso}</td>
+        <td className="px-4 py-2">{data?.firstName}</td>
+        <td className="px-4 py-2">{data?.lastName}</td>
+        <td className="px-4 py-2">{data?.bi}</td>
+        <td className="px-4 py-2">{data?.telephone}</td>
+        <td className="px-4 py-2">{data?.email}</td>
       </tr>
     ));
   };
@@ -70,11 +66,11 @@ export const UserTable = ({data, title}: tableProps) => {
         <table className="min-w-full table-auto border-collapse">
                 <thead className="bg-brown-600] border rounded-[100px]">
                 <tr className='text-left border text-[14px] font-[700] text-[#727272] bg-[#F9F9F9] rounded-t-[10px]'>
-                    <th className="px-[.5em] py-2">Usuário</th>
-                    <th className="px-[.5em] py-2">Identificação</th>
+                    <th className="px-[.5em] py-2">Primeiro Nome</th>
+                    <th className="px-[.5em] py-2">Sobrenome</th>
+                    <th className="px-[.5em] py-2">Identificaçºao</th>
                     <th className="px-[.5em] py-2">Telefone</th>
                     <th className="px-[.5em] py-2">Email</th>
-                    <th className="px-[.5em] py-2">Nivel de Acesso</th>
                 </tr>
 
                 </thead>

@@ -1,10 +1,10 @@
 import { Barcode } from "@phosphor-icons/react";
-import { Card, Container, StockTable } from "../component";
+import { Card, Container, ProductTable } from "../component";
 import { useGetdata } from "../../../common/hook/get/useGetdata";
 
-export default function StockManagement(){
+export default function ProductManagement(){
 
-    const {data: estoque} = useGetdata("stock");
+    const {data: estoque} = useGetdata("product");
 
     return (
         <Container title="Gerenciamento de Menu">
@@ -12,7 +12,7 @@ export default function StockManagement(){
             <Card quantity={estoque?.length ?? 0} title="Productos em Estoque" icon={<Barcode className="w-[2em] h-[2em] text-[#264A7D]" />} />
 
             <div className="bg-[#fff] md:w-[100%] md:h-[100%] rounded-[.5em] p-[.5em]">
-                <StockTable data={estoque} title="Lista de Productos"/>
+                <ProductTable data={estoque} title="Lista de Productos"/>
             </div>
         </Container>
     )

@@ -20,6 +20,7 @@ import UserManagement from "../modules/administrator/page/user-management";
 import SupportAdministrator from "../modules/administrator/page/support";
 import RoleManagement from "../modules/administrator/page/role-management";
 import EmployerManagement from "../modules/administrator/page/employer-management";
+import ProductManagement from "../modules/stock/page/product-management";
 
 
 export function RoutePath () {
@@ -33,6 +34,7 @@ export function RoutePath () {
 
                 <Route path="stock" element={<ProtectedRouteStock><HomeStock/></ProtectedRouteStock>}/>
                 <Route path="stock/stockmanagement" element={<ProtectedRouteStock><StockManagement/></ProtectedRouteStock>}/>
+                <Route path="stock/productmanagement" element={<ProtectedRouteStock><ProductManagement/></ProtectedRouteStock>}/>
                 <Route path="stock/support" element={<ProtectedRouteStock><SupportStock/></ProtectedRouteStock>}/>
                 <Route path="stock/settings" element={<ProtectedRouteStock><Settings/></ProtectedRouteStock>}/> 
                 <Route path="stock/supplymanagement" element={<ProtectedRouteStock><SupplyManagement/></ProtectedRouteStock>}/> 

@@ -1,19 +1,23 @@
 import { CaretDoubleLeft, CaretDoubleRight } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import StockModal from '../modal/stock-modal';
 import { useMoneyConvert } from '../../../../common/hook/useMoneyConvert';
-import ProductModal from '../modal/product-modal';
 
 type tableProps = {
     data: {
-      nome: string,
-      preco: number,
-      descricao: string,
+      produto: {
+        nome: string,
+        preco: number,
+        descricao: string,
+      },
+      quantidade: string,
+
     }[],
     title: string, 
 }
 
-export const ProductTable = ({data, title}: tableProps) => {
+export const StockTable = ({data, title}: tableProps) => {
 
   const rowsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,9 +30,10 @@ export const ProductTable = ({data, title}: tableProps) => {
     return paginatedRows?.map((data, index) => (
 
       <tr key={index} className="border-t border-b">
-        <td className="px-4 py-2">{data?.nome}</td>
-        <td className="px-4 py-2">{useMoneyConvert(+data?.preco)}</td>
-        <td className="px-4 py-2">{data?.descricao}</td>
+        <td className="px-4 py-2">{data?.produto?.nome}</td>
+        <td className="px-4 py-2">{useMoneyConvert(+data?.produto?.preco)}</td>
+        <td className="px-4 py-2">{data?.quantidade}</td>
+        <td className="px-4 py-2">{data?.produto?.descricao}</td>
       </tr>
     ));
   };
@@ -55,7 +60,7 @@ export const ProductTable = ({data, title}: tableProps) => {
         <div className="flex justify-between">
           <h2 className="text-[#264A7D] font-[400] text-[16px]">{title}</h2>
           {
-            isInMainScreen("/stock/productmanagement") && <ProductModal/>
+            isInMainScreen("/stock/stockmanagement") && <StockModal/>
           }
         </div>
       
@@ -68,6 +73,7 @@ export const ProductTable = ({data, title}: tableProps) => {
                 <tr className='text-left border text-[14px] font-[700] text-[#727272] bg-[#F9F9F9] rounded-t-[10px]'>
                     <th className="px-[.5em] py-2">Nome do Produto</th>
                     <th className="px-[.5em] py-2">Preço</th>
+                    <th className="px-[.5em] py-2">Quatidade</th>
                     <th className="px-[.5em] py-2">Descrição</th>
                 </tr>
 

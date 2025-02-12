@@ -5,7 +5,7 @@ import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
 import { SubmitButton } from '../button/submitButton';
 import { ModalButton } from '../button/ModalButton';
-import { useCreateStock } from '../../hook';
+import { useCreateProduct } from '../../hook/create/product';
 
 const style = {
   position: 'absolute',
@@ -20,7 +20,7 @@ const style = {
   p: 2,
 };
 
-export default function StockModal() {
+export default function ProductModal() {
   
   const [open, setOpen] = React.useState(false);
   
@@ -28,13 +28,13 @@ export default function StockModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateStock();
+  const {data, handleChange, handleSubmit} = useCreateProduct(handleClose);
 
   return (
     
     <div>
 
-      <ModalButton onClick={handleOpen} text="Alocar Producto"/>
+      <ModalButton onClick={handleOpen} text="Registrar Producto"/>
       
       <Modal
       
@@ -65,11 +65,11 @@ export default function StockModal() {
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-[.5em] justify-center items-center'>
 
-                <Input label='Producto' value={data?.product} change={handleChange} name='product'/>
+                <Input label='Producto' value={data?.name} change={handleChange} name='name'/>
               
                 <Input label='Preço' value={data?.price} change={handleChange} name='price'/>
 
-                <Input label='Data de validade' type='date' value={data?.dateOfExpire} change={handleChange} name='dateOfExpire'/>
+                <Input label='Descrição' value={data?.description} change={handleChange} name='description'/>
               
                 <SubmitButton text='Registrar'/>
 

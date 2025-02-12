@@ -1,7 +1,7 @@
 import {  Airplay, Barn,
     DeviceRotate,
     //  Gear, 
-     Info, SignOut, Users } from "@phosphor-icons/react"
+     Info, Popcorn, SignOut, Users } from "@phosphor-icons/react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { USER_DATA_ROLE, USER_MASTER_VERIFY } from "../../../../common/utils/storageVariables";
 
@@ -60,6 +60,15 @@ export const SideBar = () => {
                                 <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/stock/stockmanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
                                     <Barn className="w-[20px] h-[20px]"/>
                                     Gerir Estoque
+                                </li>
+                            </Link>
+
+                            <Link to="/stock/productmanagement" className="flex justify-start gap-[.5em]">
+                                <span className={`h-[40px] flex items-center gap-[.5em] ${isActive("/stock/productmanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} w-[.3em] ml-[-.5em] rounded-tr-[.5em] rounded-br-[.5em]`}></span>
+
+                                <li className={`h-[40px] w-[100%] flex items-center gap-[.5em] rounded-[.5em] ${isActive("/stock/productmanagement") ? 'bg-[#264A7D] text-[#fff] font-[500]' : 'bg-[#fff]'} p-[.5em]`}>
+                                    <Popcorn className="w-[20px] h-[20px]"/>
+                                    Gerir Producto
                                 </li>
                             </Link>
 

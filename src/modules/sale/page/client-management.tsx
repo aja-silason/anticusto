@@ -2,15 +2,6 @@ import { Users } from "@phosphor-icons/react"
 import { Container, Card, ClientTable  } from "../component"
 import { useGetdata } from "../../../common/hook/get/useGetdata"
 
-export const supplyData = [
-    {client: "Adão Nunda", bi: "0009876546LL09", phone: "944996909"},
-    {client: "Paulo André", bi: "N33&65", phone: "944996909"},
-    {client: "Filipe Qlerius", bi: "N33&65", phone: "944996909"},
-    {client: "Pimental Lisboa", bi: "N33&65", phone: "944996909"},
-    {client: "Joana Gomes", bi: "N33&65", phone: "944996909"},
-    {client: "Atilio Osório", bi: "N33&65", phone: "944996909"},
-]
-
 export default function ClientManagement () {
 
     const {data: client} = useGetdata("client");

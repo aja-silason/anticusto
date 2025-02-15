@@ -20,19 +20,6 @@ const style = {
   p: 2,
 };
 
-const product: any = [
-  {product: "Pão"},
-  {product: "Arroz"},
-  {product: "Vinagre"}
-]
-
-const civilState: any = [
-  {state: "Casado"},
-  {state: "Solteiro"},
-  {state: "Viúvo"},
-]
-
-
 export default function ClientModal() {
   
   const [open, setOpen] = React.useState(false);

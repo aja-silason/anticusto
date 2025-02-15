@@ -6,9 +6,11 @@ import ProductModal from '../modal/product-modal';
 
 type tableProps = {
     data: {
-      nome: string,
-      preco: number,
-      descricao: string,
+      produto: {
+        nome: string,
+        preco: number,
+        descricao: string,
+      }
     }[],
     title: string, 
 }
@@ -26,9 +28,9 @@ export const ProductTable = ({data, title}: tableProps) => {
     return paginatedRows?.map((data, index) => (
 
       <tr key={index} className="border-t border-b">
-        <td className="px-4 py-2">{data?.nome}</td>
-        <td className="px-4 py-2">{useMoneyConvert(+data?.preco)}</td>
-        <td className="px-4 py-2">{data?.descricao}</td>
+        <td className="px-4 py-2">{data?.produto?.nome}</td>
+        <td className="px-4 py-2">{useMoneyConvert(+data?.produto?.preco)}</td>
+        <td className="px-4 py-2">{data?.produto?.descricao}</td>
       </tr>
     ));
   };

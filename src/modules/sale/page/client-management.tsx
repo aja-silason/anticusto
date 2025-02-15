@@ -1,5 +1,6 @@
 import { Users } from "@phosphor-icons/react"
 import { Container, Card, ClientTable  } from "../component"
+import { useGetdata } from "../../../common/hook/get/useGetdata"
 
 export const supplyData = [
     {client: "Adão Nunda", bi: "0009876546LL09", phone: "944996909"},
@@ -12,13 +13,16 @@ export const supplyData = [
 
 export default function ClientManagement () {
 
+    const {data: client} = useGetdata("client");
+    const cliente = client && client;
+
     return (
         <Container title="Cliente">
             
-            <Card quantity={supplyData?.length ?? 0} title="Clientes" icon={<Users className="w-[2em] h-[2em] text-[#264A7D]" />} />
+            <Card quantity={cliente?.length ?? 0} title="Clientes" icon={<Users className="w-[2em] h-[2em] text-[#264A7D]" />} />
 
             <div className="bg-[#fff] md:w-[100%] md:h-[100%] rounded-[.5em] p-[.5em]">
-                <ClientTable data={supplyData} title="Fornecedores Encontrados"/>
+                <ClientTable data={cliente} title="Fornecedores Encontrados"/>
             </div>
         </Container>
     )

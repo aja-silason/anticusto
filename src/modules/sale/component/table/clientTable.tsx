@@ -4,9 +4,9 @@ import ClientModal from '../modal/client-modal';
 
 type tableProps = {
     data: {
-        client: string, 
+        name: string, 
         bi: string, 
-        phone: string
+        telephone: string
     }[],
     title: string, 
 }
@@ -23,9 +23,9 @@ export const ClientTable = ({data, title}: tableProps) => {
 
     return paginatedRows.map((data, index) => (
       <tr key={index} className="border-t border-b">
-        <td className="px-4 py-2">{data.client}</td>
+        <td className="px-4 py-2">{data.name}</td>
         <td className="px-4 py-2">{data.bi}</td>
-        <td className="px-4 py-2">{data.phone}</td>
+        <td className="px-4 py-2">{data.telephone}</td>
       </tr>
     ));
   };

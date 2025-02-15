@@ -41,13 +41,12 @@ export default function ClientModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateClient();
+  const {data, handleChange, handleSubmit} = useCreateClient(handleClose);
 
   return (
     
     <div>
 
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <ModalButton onClick={handleOpen} text="Registrar Cliente"/>
       
       <Modal
@@ -79,29 +78,11 @@ export default function ClientModal() {
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-[.5em] justify-center items-center'>
 
-                <Input label='Cliente' value={data?.client} change={handleChange} name='client'/>
+                <Input label='Cliente' value={data?.name} change={handleChange} name='name'/>
                 
                 <Input label='Identificação' value={data?.bi} change={handleChange} name='bi'/>
 
-                <Input label='Telefone' type='number' value={data?.phone} change={handleChange} name='phone'/>
-                
-                <Input label='Correio Electrónico' type='email' value={data?.email} change={handleChange} name='email'/>
-                
-                <Input label='Endereço | Morada' value={data?.address} change={handleChange} name='address'/>
-                
-                <div className="flex flex-col gap-[.5em] w-[100%]">
-                  <label htmlFor={product} className="text-[11pt]">Estado civíl</label>
-                    <select name="civilState" id="civilState" value={data?.civilState} onChange={handleChange} className="border cursor-pointer border-[#ccc] rounded-[5px] p-[.5em] w-[100%]">
-                      <option></option>
-                      {
-                        civilState && civilState?.map((item: any) => {
-                          return (
-                            <option id='product' value={item?.state} onChange={handleChange}>{item?.state}</option>
-                          )
-                        })
-                      }
-                    </select>
-                </div>
+                <Input label='Telefone' type='number' value={data?.telephone} change={handleChange} name='telephone'/>
                 
                 <SubmitButton text='Registrar Cliente'/>
 

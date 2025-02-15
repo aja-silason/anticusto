@@ -1,18 +1,17 @@
+import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from "sonner";
+import { mutate } from "swr";
 
-type saleProps = {
-    client: string,
+type clientProps = {
+    name: string,
     bi: string,
-    email: string,
-    address: string,
-    civilState: string,
-    phone: string,
+    telephone: string,
 }
 
-export const useCreateClient = () => {
+export const useCreateClient = (handleClose: VoidFunction) => {
     
-    const [data, setData] = useState<saleProps>({client: "", phone: "", bi: "", civilState: "", email: "", address: ""});
+    const [data, setData] = useState<clientProps>({name: "", bi: "", telephone: ""});
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | any>) => {
         const {name, value} = e?.target;
@@ -26,23 +25,38 @@ export const useCreateClient = () => {
 
         e?.preventDefault();
 
+        const api_url = import.meta.env.VITE_API_URL;
+
         try {
             
-            const payload: saleProps = {
-                client: data?.client,
-                phone: data?.phone,
+            const payload: clientProps = {
+                name: data?.name,
                 bi: data?.bi,
-                civilState: data?.civilState,
-                email: data?.email,
-                address: data?.address
+                telephone: data?.telephone
             }
 
-            console.log("payload", payload);
+            const isValidade: Array<keyof clientProps> = ["name", "bi", "telephone"];
+            for(const key of isValidade) {
+                if(payload[key] === undefined || payload[key] === null || payload[key].trim() === ""){
+                    toast.warning(`${key == "name" ? "Nome do Cliente" : key == "bi" ? "Bilhete de Identidade" : "Telefone" } precisa ser verificado`);
+                    return;
+                }
+            }
+
+            await axios.post(`${api_url}/client`, payload);
+            
+            await mutate((prevState: any) => [
+                {...prevState}, payload
+            ]);
             
             toast.success("venda realizada com sucesso", {duration: 3000});
+            handleClose();
+            setData({name: "", bi: "", telephone: ""});
+
 
         } catch (error) {
-            toast.error("Impossivle processar a compra", {duration: 3000});
+            toast.error("Impossivle cadastrar o usário", {duration: 3000});
+        } finally {
         }
 
     }

@@ -12,7 +12,7 @@ export default function StockManagement(){
             <Card quantity={estoque?.length ?? 0} title="Productos em Estoque" icon={<Barcode className="w-[2em] h-[2em] text-[#264A7D]" />} />
 
             <div className="bg-[#fff] md:w-[100%] md:h-[100%] rounded-[.5em] p-[.5em]">
-                <StockTable data={estoque} title="Lista de Productos"/>
+                <StockTable data={estoque} title="Lista de Productos em Estoque"/>
             </div>
         </Container>
     )

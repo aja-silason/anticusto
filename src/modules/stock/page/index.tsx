@@ -1,5 +1,5 @@
 import { Gear } from "@phosphor-icons/react";
-import { Container, Card, ProductTable, SupplyTable } from "../component";
+import { Container, Card, SupplyTable, StockTable } from "../component";
 import { useGetdata } from "../../../common/hook/get/useGetdata";
 
 export default function HomeStock() {
@@ -16,7 +16,7 @@ export default function HomeStock() {
             </div>
 
             <div className="bg-[#fff] flex gap-[1em] w-[100%] p-[.5em] rounded-[.5em] md:h-[70%]">
-                <ProductTable data={estoque} title="Produtos Registrados"/>
+                <StockTable data={estoque} title="Lista de Productos em Estoque"/>
                 <SupplyTable data={fornecedor} title="Fornecedores Encontrados"/>
             </div>
         </Container>

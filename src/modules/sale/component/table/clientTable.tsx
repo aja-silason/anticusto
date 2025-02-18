@@ -19,13 +19,13 @@ export const ClientTable = ({data, title}: tableProps) => {
   const renderTable = () => {
     const startIdx = (currentPage - 1) * rowsPerPage;
     const endIdx = startIdx + rowsPerPage;
-    const paginatedRows = data.slice(startIdx, endIdx);
+    const paginatedRows = data?.slice(startIdx, endIdx);
 
-    return paginatedRows.map((data, index) => (
+    return paginatedRows?.filter((data) => data.name.includes("S/N") ? null : data)?.map((data, index) => (
       <tr key={index} className="border-t border-b">
-        <td className="px-4 py-2">{data.name}</td>
-        <td className="px-4 py-2">{data.bi}</td>
-        <td className="px-4 py-2">{data.telephone}</td>
+        <td className="px-4 py-2">{data?.name}</td>
+        <td className="px-4 py-2">{data?.bi}</td>
+        <td className="px-4 py-2">{data?.telephone}</td>
       </tr>
     ));
   };
@@ -37,7 +37,7 @@ export const ClientTable = ({data, title}: tableProps) => {
   };
 
   const handleNextPage = () => {
-    if (currentPage * rowsPerPage < data.length) {
+    if (currentPage * rowsPerPage < data?.length) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -80,10 +80,10 @@ export const ClientTable = ({data, title}: tableProps) => {
         </button>
         <button 
           onClick={handleNextPage} 
-          className={`p-[.4em] mx-2 rounded ${currentPage * rowsPerPage >= data.length ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
-          disabled={currentPage * rowsPerPage >= data.length}
+          className={`p-[.4em] mx-2 rounded ${currentPage * rowsPerPage >= data?.length ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
+          disabled={currentPage * rowsPerPage >= data?.length}
         >
-          <CaretDoubleRight className={`w-[20px] h-[20px] ${currentPage * rowsPerPage >= data.length ? 'text-[#000] cursor-not-allowed' : "text-[#fff]"} `}/>
+          <CaretDoubleRight className={`w-[20px] h-[20px] ${currentPage * rowsPerPage >= data?.length ? 'text-[#000] cursor-not-allowed' : "text-[#fff]"} `}/>
         </button>
       </div>
     </div>

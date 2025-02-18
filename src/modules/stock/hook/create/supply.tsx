@@ -16,6 +16,8 @@ export const useCreateSupply = (handleClose: VoidFunction) => {
     const api_url = import.meta.env.VITE_API_URL;
     
     const [data, setData] = useState<supplyProps>({nome: "", telefone: "", nif: ""});
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | any>) => {
         const {value, name} = e?.target;
@@ -28,6 +30,7 @@ export const useCreateSupply = (handleClose: VoidFunction) => {
     const handleSubmit = async (e: FormEvent) => {
         
         e?.preventDefault();
+        setIsLoading(true);
         
         try {
                         
@@ -52,6 +55,9 @@ export const useCreateSupply = (handleClose: VoidFunction) => {
             ])
 
             toast.success("Fornecedor Adicionado com sucesso", {duration: 3000});
+            handleClose();
+            setIsLoading(true);
+
 
 
         } catch (error: any) {
@@ -60,7 +66,6 @@ export const useCreateSupply = (handleClose: VoidFunction) => {
 
         } finally {
             setData({nome: "", telefone: "",nif: ""})
-            handleClose();
         }
 
     }
@@ -69,6 +74,7 @@ export const useCreateSupply = (handleClose: VoidFunction) => {
         data,
         handleChange,
         handleSubmit,
+        isLoading
     }
 
 }

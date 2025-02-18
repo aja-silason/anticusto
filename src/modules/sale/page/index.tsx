@@ -1,5 +1,6 @@
 import { Barcode, Money, MoneyWavy } from "@phosphor-icons/react";
 import { Container, Card, SalesTable } from "../component";
+import { useGetdata } from "../../../common/hook/get/useGetdata";
 
 const mockrowsDay = [
     { clientName: "Anania Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
@@ -32,6 +33,8 @@ const mockrowsMonth = [
 
 
 export default function HomeSale() {
+
+    const {data: sale} = useGetdata("/sale");
 
     return (
         <Container title="Posto de venda">

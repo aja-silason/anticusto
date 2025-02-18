@@ -4,8 +4,8 @@ import Modal from '@mui/material/Modal';
 import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
 import { useCreateSupply } from '../../hook';
-import { SubmitButton } from '../button/submitButton';
 import { ModalButton } from '../button/ModalButton';
+import { SubmitButton } from '../../../../common';
 
 const style = {
   position: 'absolute',
@@ -28,7 +28,7 @@ export default function SupplyModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateSupply(handleClose);
+  const {data, handleChange, handleSubmit, isLoading} = useCreateSupply(handleClose);
 
   return (
     
@@ -71,7 +71,7 @@ export default function SupplyModal() {
                 
                 <Input label='NIF' value={data?.nif} change={handleChange} name='nif'/>
               
-                <SubmitButton text='Registrar'/>
+                <SubmitButton text='Registrar' isLoading={isLoading}/>
 
             </form>
           

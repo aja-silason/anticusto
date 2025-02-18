@@ -14,6 +14,8 @@ export const useCreateStock = (handleClose: VoidFunction) => {
 
 
     const [data, setData] = useState<stockProps>({id_product: "", quantity: ""});
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | any>) => {
         const {value, name} = e?.target;
@@ -28,6 +30,8 @@ export const useCreateStock = (handleClose: VoidFunction) => {
         const api_url = import.meta.env.VITE_API_URL;
         
         e?.preventDefault();
+        setIsLoading(true);
+
         
         try {
 
@@ -52,6 +56,8 @@ export const useCreateStock = (handleClose: VoidFunction) => {
             toast.success("Producto Adicionado com sucesso no stock", {duration: 3000});
             
             handleClose();
+            setIsLoading(false);
+
         } catch (error) {
 
             toast.error("Producto não Adicionado no stock", {duration: 3000});
@@ -67,6 +73,7 @@ export const useCreateStock = (handleClose: VoidFunction) => {
         data,
         handleChange,
         handleSubmit,
+        isLoading
     }
 
 }

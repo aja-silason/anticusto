@@ -3,9 +3,10 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
-import { SubmitButton } from '../button/submitButton';
+// import { SubmitButton } from '../button/submitButton';
 import { ModalButton } from '../button/ModalButton';
 import { useCreateProduct } from '../../hook/create/product';
+import { SubmitButton } from '../../../../common';
 
 const style = {
   position: 'absolute',
@@ -28,7 +29,7 @@ export default function ProductModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateProduct(handleClose);
+  const {data, handleChange, handleSubmit, isLoading} = useCreateProduct(handleClose);
 
   return (
     
@@ -71,7 +72,7 @@ export default function ProductModal() {
 
                 <Input label='Descrição' value={data?.description} change={handleChange} name='description'/>
               
-                <SubmitButton text='Registrar'/>
+                <SubmitButton text='Registrar' isLoading={isLoading}/>
 
             </form>
           

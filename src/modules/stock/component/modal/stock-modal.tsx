@@ -3,10 +3,10 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
-import { SubmitButton } from '../button/submitButton';
 import { ModalButton } from '../button/ModalButton';
 import { useCreateStock } from '../../hook';
 import { useGetdata } from '../../../../common/hook/get/useGetdata';
+import { SubmitButton } from '../../../../common';
 
 const style = {
   position: 'absolute',
@@ -29,7 +29,7 @@ export default function StockModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateStock(handleClose);
+  const {data, handleChange, handleSubmit, isLoading} = useCreateStock(handleClose);
 
   const {data: product} = useGetdata("product");
 
@@ -84,7 +84,7 @@ export default function StockModal() {
                     </select>
                 </div>
 
-                <SubmitButton text='Registrar'/>
+                <SubmitButton text='Registrar' isLoading={isLoading}/>
 
             </form>
           

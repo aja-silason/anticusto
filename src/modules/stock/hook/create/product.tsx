@@ -17,6 +17,7 @@ export const useCreateProduct = (handleClose: VoidFunction) => {
 
 
     const [data, setData] = useState<productProps>({name: "", price: 0 ,description: ""});
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | any>) => {
         const {value, name} = e?.target;
@@ -29,6 +30,8 @@ export const useCreateProduct = (handleClose: VoidFunction) => {
     const handleSubmit = async (e: FormEvent) => {
         
         e?.preventDefault();
+
+        setIsLoading(true);
         
         try {
 
@@ -56,6 +59,8 @@ export const useCreateProduct = (handleClose: VoidFunction) => {
             
             handleClose();
 
+            setIsLoading(false);
+
 
         } catch (error: any) {
             toast.success(`${error?.message?.data?.message}`, {duration: 3000});
@@ -70,6 +75,7 @@ export const useCreateProduct = (handleClose: VoidFunction) => {
         data,
         handleChange,
         handleSubmit,
+        isLoading
     }
 
 }

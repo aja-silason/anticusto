@@ -5,7 +5,8 @@ import { useGetdata } from "../../../common/hook/get/useGetdata"
 export default function ClientManagement () {
 
     const {data: client} = useGetdata("client");
-    const cliente = client && client;
+
+    const cliente = client && client?.filter((data: any) => data.name.includes("S/N") ? null : data);
 
     return (
         <Container title="Cliente">

@@ -22,8 +22,6 @@ const mockrowsMonth = [
   ];
 
 
-  const allSale = mockrowsDay.concat(mockrowsWeek).concat(mockrowsMonth);
-
   const totalMockDay = mockrowsDay.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
 
   const totalMockWeek = mockrowsWeek.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
@@ -34,7 +32,9 @@ const mockrowsMonth = [
 
 export default function HomeSale() {
 
-    const {data: sale} = useGetdata("/sale");
+    const {data: sale} = useGetdata("sale");
+
+    const sales = sale && sale;
 
     return (
         <Container title="Posto de venda">
@@ -50,9 +50,11 @@ export default function HomeSale() {
 
             <div className="bg-[#fff] flex gap-[1em] w-[100%] p-[.5em] rounded-[.5em] md:h-[70%]">
 
-                <SalesTable data={allSale} title="Vendas Registradas"/>
+                <SalesTable data={sales} title="Vendas Registradas"/>
 
             </div>
         </Container>
     )
 }
+
+// cliente, telefone, producto, quantidade

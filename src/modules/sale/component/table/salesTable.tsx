@@ -5,10 +5,9 @@ import ItemSoldModal from '../modal/item-sold-modal';
 
 type tableProps = {
     data: {
-        clientName: string,
-        phoneClient: string,
-        product: string,
-        quantity: number
+        cliente: { nome: string, telefone: string},
+        producto: {nome: string},
+        quantidade: number
 
     }[],
     title: string, 
@@ -22,15 +21,15 @@ export const SalesTable = ({data, title}: tableProps) => {
   const renderTable = () => {
     const startIdx = (currentPage - 1) * rowsPerPage;
     const endIdx = startIdx + rowsPerPage;
-    const paginatedRows = data.slice(startIdx, endIdx);
+    const paginatedRows = data?.slice(startIdx, endIdx);
 
-    return paginatedRows.map((data, index: number) => 
+    return paginatedRows?.map((data, index: number) => 
        (
         <tr key={index} className="border-t border-b">
-          <td className="px-4 py-2">{data.clientName}</td>
-          <td className="px-4 py-2">{data.phoneClient}</td>
-          <td className="px-4 py-2">{data.product}</td>
-          <td className="px-4 py-2">{data.quantity}</td> 
+          <td className="px-4 py-2">{data?.cliente?.nome}</td>
+          <td className="px-4 py-2">{data?.cliente?.telefone}</td>
+          <td className="px-4 py-2">{data?.producto?.nome}</td>
+          <td className="px-4 py-2">{data?.quantidade}</td> 
           {/* <SaleModal/>  */}
           <ItemSoldModal data={data} index={index}/>
         </tr> 
@@ -90,10 +89,10 @@ export const SalesTable = ({data, title}: tableProps) => {
         </button>
         <button 
           onClick={handleNextPage} 
-          className={`p-[.4em] mx-2 rounded ${currentPage * rowsPerPage >= data.length ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
-          disabled={currentPage * rowsPerPage >= data.length}
+          className={`p-[.4em] mx-2 rounded ${currentPage * rowsPerPage >= data?.length ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white'}`} 
+          disabled={currentPage * rowsPerPage >= data?.length}
         >
-          <CaretDoubleRight className={`w-[20px] h-[20px] ${currentPage * rowsPerPage >= data.length ? 'text-[#000] cursor-not-allowed' : "text-[#fff]"} `}/>
+          <CaretDoubleRight className={`w-[20px] h-[20px] ${currentPage * rowsPerPage >= data?.length ? 'text-[#000] cursor-not-allowed' : "text-[#fff]"} `}/>
         </button>
       </div>
     </div>

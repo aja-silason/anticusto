@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { X } from '@phosphor-icons/react';
@@ -6,6 +6,8 @@ import { Input } from '../input/input';
 import { SubmitButton } from '../button/submitButton';
 import { ModalButton } from '../button/ModalButton';
 import { useCreateSale } from '../../hook';
+import { useGetdata } from '../../../../common/hook/get/useGetdata';
+import { Selects } from '../../../../common';
 
 const style = {
   position: 'absolute',
@@ -20,21 +22,30 @@ const style = {
   p: 2,
 };
 
-const product: any = [
-  {product: "Pão"},
-  {product: "Arroz"},
-  {product: "Vinagre"}
-]
-
 export default function SaleModal() {
   
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
+  const [datas, setDatas] = useState([])
   
   const handleOpen = () => setOpen(true);
   
   const handleClose = () => setOpen(false);
 
   const {data, handleChange, handleSubmit} = useCreateSale();
+
+  const {data: product} = useGetdata("product");
+
+  useEffect(() => {
+
+      const mappedDatas = product?.map((product: any) => ({
+          value: product?.id,
+          label: product?.nome
+      }));
+
+      setDatas(mappedDatas);
+
+  }, [product]);
 
   return (
     
@@ -76,7 +87,13 @@ export default function SaleModal() {
                 
                 <Input label='Telefone' value={data?.phone} change={handleChange} name='phone'/>
 
-                <div className="flex flex-col gap-[.5em] w-[100%]">
+                {/* <div className="w-[100%] mx-auto mt-10">
+                  <label htmlFor={product} className="text-[11pt]">Producto</label>
+                  </div> */}
+
+                  <Selects option={datas} label='Produto'/>
+
+                {/* <div className="flex flex-col gap-[.5em] w-[100%]">
                   <label htmlFor={product} className="text-[11pt]">Producto</label>
                     <select name="product" id="product" value={data?.product} onChange={handleChange} className="border cursor-pointer border-[#ccc] rounded-[5px] p-[.5em] w-[100%]">
                       <option></option>
@@ -88,7 +105,7 @@ export default function SaleModal() {
                         })
                       }
                     </select>
-                </div>
+                </div> */}
                 
                 <Input label='Quantidade' type='number' value={data?.quantity} change={handleChange} name='quantity'/>
                             

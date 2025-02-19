@@ -20,6 +20,18 @@ export const useCreateSale = () => {
         }));
     }
 
+    const handleSelectProductChange = (selectedOption: any) => {
+        setData((prevState) => ({
+            ...prevState, product: selectedOption?.value || ""
+        }));
+    }
+
+    const handleSelectClientChange = (selectedOption: any) => {
+        setData((prevState) => ({
+            ...prevState, client: selectedOption?.value || ""
+        }));
+    }
+
     const handleSubmit = async (e: FormEvent) => {
 
         e?.preventDefault();
@@ -47,6 +59,8 @@ export const useCreateSale = () => {
     return {
         handleChange,
         handleSubmit,
+        handleSelectProductChange,
+        handleSelectClientChange,
         data
     }
 }

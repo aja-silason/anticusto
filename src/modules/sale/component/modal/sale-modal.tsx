@@ -27,14 +27,16 @@ export default function SaleModal() {
   const [open, setOpen] = useState(false);
 
   const [datas, setDatas] = useState([])
+  const [clientes, setClintes] = useState([])
   
   const handleOpen = () => setOpen(true);
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateSale();
+  const {data, handleChange, handleSubmit, handleSelectClientChange, handleSelectProductChange} = useCreateSale();
 
   const {data: product} = useGetdata("product");
+  const {data: client} = useGetdata("client");
 
   useEffect(() => {
 
@@ -43,9 +45,15 @@ export default function SaleModal() {
           label: product?.nome
       }));
 
-      setDatas(mappedDatas);
+      const mappedClients = client?.map((client: any) => ({
+        value: client?.id,
+        label: client?.name
+      }))
 
-  }, [product]);
+      setDatas(mappedDatas);
+      setClintes(mappedClients);
+
+  }, [client, product]);
 
   return (
     
@@ -83,29 +91,12 @@ export default function SaleModal() {
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-[.5em] justify-center items-center'>
 
-                <Input label='Cliente' value={data?.client} change={handleChange} name='client'/>
+                <Selects option={clientes} label='Cliente' name="client" value={data?.client} onChange={handleSelectClientChange}/>
+
                 
                 <Input label='Telefone' value={data?.phone} change={handleChange} name='phone'/>
 
-                {/* <div className="w-[100%] mx-auto mt-10">
-                  <label htmlFor={product} className="text-[11pt]">Producto</label>
-                  </div> */}
-
-                  <Selects option={datas} label='Produto'/>
-
-                {/* <div className="flex flex-col gap-[.5em] w-[100%]">
-                  <label htmlFor={product} className="text-[11pt]">Producto</label>
-                    <select name="product" id="product" value={data?.product} onChange={handleChange} className="border cursor-pointer border-[#ccc] rounded-[5px] p-[.5em] w-[100%]">
-                      <option></option>
-                      {
-                        product && product?.map((item: any) => {
-                          return (
-                            <option id='product' value={item?.product} onChange={handleChange}>{item?.product}</option>
-                          )
-                        })
-                      }
-                    </select>
-                </div> */}
+                <Selects option={datas} label='Produto' name="product" value={data?.product} onChange={handleSelectProductChange}/>
                 
                 <Input label='Quantidade' type='number' value={data?.quantity} change={handleChange} name='quantity'/>
                             

@@ -3,11 +3,10 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
-import { SubmitButton } from '../button/submitButton';
 import { ModalButton } from '../button/ModalButton';
 import { useCreateSale } from '../../hook';
 import { useGetdata } from '../../../../common/hook/get/useGetdata';
-import { Selects } from '../../../../common';
+import { Selects, SubmitButton } from '../../../../common';
 
 const style = {
   position: 'absolute',
@@ -33,7 +32,7 @@ export default function SaleModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit, handleSelectClientChange, handleSelectProductChange} = useCreateSale();
+  const {data, isLoading, handleChange, handleSubmit, handleSelectClientChange, handleSelectProductChange} = useCreateSale(handleClose);
 
   const {data: product} = useGetdata("product");
   const {data: client} = useGetdata("client");
@@ -91,16 +90,16 @@ export default function SaleModal() {
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-[.5em] justify-center items-center'>
 
-                <Selects option={clientes} label='Cliente' name="client" value={data?.client} onChange={handleSelectClientChange}/>
 
+                <Selects option={datas} label='Produto' name="product_id" value={data?.product_id} onChange={handleSelectProductChange}/>
                 
-                <Input label='Telefone' value={data?.phone} change={handleChange} name='phone'/>
+                {/* <Input label='Telefone' value={data?.} change={handleChange} name='phone'/> */}
 
-                <Selects option={datas} label='Produto' name="product" value={data?.product} onChange={handleSelectProductChange}/>
-                
                 <Input label='Quantidade' type='number' value={data?.quantity} change={handleChange} name='quantity'/>
+                
+                <Selects option={clientes} label='Cliente' name="client_id" value={data?.client_id} onChange={handleSelectClientChange}/>
                             
-                <SubmitButton text='Registrar venda'/>
+                <SubmitButton text='Registrar venda' isLoading={isLoading}/>
 
             </form>
           

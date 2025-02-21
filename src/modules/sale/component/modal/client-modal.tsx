@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { X } from '@phosphor-icons/react';
 import { Input } from '../input/input';
-import { SubmitButton } from '../button/submitButton';
+import { SubmitButton } from '../../../../common/component/button/submitButton';
 import { ModalButton } from '../button/ModalButton';
 import { useCreateClient } from '../../hook';
 
@@ -28,7 +28,7 @@ export default function ClientModal() {
   
   const handleClose = () => setOpen(false);
 
-  const {data, handleChange, handleSubmit} = useCreateClient(handleClose);
+  const {data, handleChange, handleSubmit, isLoading} = useCreateClient(handleClose);
 
   return (
     
@@ -71,7 +71,7 @@ export default function ClientModal() {
 
                 <Input label='Telefone' type='number' value={data?.telephone} change={handleChange} name='telephone'/>
                 
-                <SubmitButton text='Registrar Cliente'/>
+                <SubmitButton text='Registrar Cliente' isLoading={isLoading}/>
 
             </form>
           

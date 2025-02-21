@@ -5,7 +5,7 @@ import { useLogin } from "../common/hook";
 
 export const LoginScreen = () => {
 
-    const {data, handleChange, handleSubmit} = useLogin();
+    const {data, handleChange, handleSubmit, isLoading} = useLogin();
 
     return (
         <div className="flex justify-center items-center h-[100vh]">
@@ -17,7 +17,7 @@ export const LoginScreen = () => {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-[1em]">
                     <Input change={handleChange} label="E-mail ou Telefone" name="telephone" value={data?.telephone} key={0}/>
                     <Input change={handleChange} label="Password" name="password" value={data?.password} type="password" key={1}/>
-                    <SubmitButton text="Entrar"/>
+                    <SubmitButton text="Entrar" isLoading={isLoading}/>
                 </form>
 
             </LoginContainer>

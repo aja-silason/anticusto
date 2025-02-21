@@ -93,8 +93,6 @@ export default function SaleModal() {
 
                 <Selects option={datas} label='Produto' name="product_id" value={data?.product_id} onChange={handleSelectProductChange}/>
                 
-                {/* <Input label='Telefone' value={data?.} change={handleChange} name='phone'/> */}
-
                 <Input label='Quantidade' type='number' value={data?.quantity} change={handleChange} name='quantity'/>
                 
                 <Selects option={clientes} label='Cliente' name="client_id" value={data?.client_id} onChange={handleSelectClientChange}/>

@@ -13,6 +13,7 @@ type loginDataInput = {
 export const useLogin = () => {
 
     const [data, setData] = useState<loginDataInput>({telephone: "", password: ""});
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const navigate = useNavigate();
     
@@ -26,6 +27,8 @@ export const useLogin = () => {
 
     const handleSubmit = async (e: FormEvent) => {
         e?.preventDefault();
+
+        setIsLoading(true);
 
         try {
 
@@ -59,9 +62,13 @@ export const useLogin = () => {
                 navigate("/", {replace: true});
             }
 
+            setIsLoading(false);
+
             
         } catch (error: { message: string} | any) {
             error?.message == "Dados de acesso incorretos" ? toast.error("Dados de acesso incorretos", { duration: 2000}) : toast.error("Erro ao fazer o login", { duration: 2000});
+        } finally{
+            setIsLoading(false);
         }
 
     }
@@ -69,6 +76,7 @@ export const useLogin = () => {
     return {
         data,
         handleChange,
-        handleSubmit
+        handleSubmit,
+        isLoading
     }
 }

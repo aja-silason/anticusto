@@ -12,6 +12,7 @@ type clientProps = {
 export const useCreateClient = (handleClose: VoidFunction) => {
     
     const [data, setData] = useState<clientProps>({name: "", bi: "", telephone: ""});
+    const [isLoading, setIsLoading] = useState<boolean>();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | any>) => {
         const {name, value} = e?.target;
@@ -26,6 +27,8 @@ export const useCreateClient = (handleClose: VoidFunction) => {
         e?.preventDefault();
 
         const api_url = import.meta.env.VITE_API_URL;
+
+        setIsLoading(true);
 
         try {
             
@@ -53,10 +56,13 @@ export const useCreateClient = (handleClose: VoidFunction) => {
             handleClose();
             setData({name: "", bi: "", telephone: ""});
 
+            setIsLoading(false);
+
 
         } catch (error) {
-            toast.error("Impossivle cadastrar o usário", {duration: 3000});
+            toast.error("Impossivle cadastrar o cliente", {duration: 3000});
         } finally {
+            setIsLoading(false);
         }
 
     }
@@ -65,6 +71,7 @@ export const useCreateClient = (handleClose: VoidFunction) => {
     return {
         handleChange,
         handleSubmit,
-        data
+        data,
+        isLoading
     }
 }

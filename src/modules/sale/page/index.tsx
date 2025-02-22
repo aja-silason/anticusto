@@ -8,7 +8,7 @@ import { useGetdata } from "../../../common/hook/get/useGetdata";
       
       const sales: any = sale && sale;
 
-      const totalMockMonth = sales.reduce((accumulator: number, currentValue: {total_a_pagar: number}) => accumulator + currentValue?.total_a_pagar, 0);
+      const totalMockMonth = sales?.reduce((accumulator: number, currentValue: {total_a_pagar: number}) => accumulator + currentValue?.total_a_pagar, 0);
 
     return (
         <Container title="Posto de venda">

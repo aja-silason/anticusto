@@ -1,50 +1,24 @@
-import { Barcode, Money, MoneyWavy } from "@phosphor-icons/react";
+import { Money } from "@phosphor-icons/react";
 import { Container, Card, SalesTable } from "../component";
 import { useGetdata } from "../../../common/hook/get/useGetdata";
+  
+  export default function HomeSale() {
+      
+      const {data: sale} = useGetdata("sale");
+      
+      const sales: any = sale && sale;
 
-const mockrowsDay = [
-    { clientName: "Anania Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
-    { clientName: "Jaime Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
-    { clientName: "Jaime Linice", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
-  ];
-
-const mockrowsWeek = [
-    { clientName: "Anania Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
-    { clientName: "Jaime Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
-    { clientName: "Jaime Linice", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
-    { clientName: "Jaime Linice", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
-    { clientName: "Jaime Linice", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
-  ];
-
-const mockrowsMonth = [
-    { clientName: "Anania Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
-    { clientName: "Jaime Augusto", phoneClient: "944996909", product: "Sofá L - King Size", quantity: 12 },
-  ];
-
-
-  const totalMockDay = mockrowsDay.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
-
-  const totalMockWeek = mockrowsWeek.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
-
-  const totalMockMonth = mockrowsMonth.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0);
-
-
-
-export default function HomeSale() {
-
-    const {data: sale} = useGetdata("sale");
-
-    const sales = sale && sale;
+      const totalMockMonth = sales.reduce((accumulator: number, currentValue: {total_a_pagar: number}) => accumulator + currentValue?.total_a_pagar, 0);
 
     return (
         <Container title="Posto de venda">
             <div className="flex gap-[.5em] justify-between">
 
-                <Card quantity={mockrowsDay?.length ?? 0} value={totalMockDay} title="Venda diária" icon={<Barcode className="w-[2em] h-[2em] text-[#264A7D]" />} />
+                {/* <Card quantity={mockrowsDay?.length ?? 0} value={totalMockDay} title="Venda diária" icon={<Barcode className="w-[2em] h-[2em] text-[#264A7D]" />} /> */}
                 
-                <Card quantity={mockrowsWeek?.length ?? 0} value={totalMockWeek} title="Venda Semanal" icon={<MoneyWavy className="w-[2em] h-[2em] text-[#264A7D]" />} />
+                {/* <Card quantity={mockrowsWeek?.length ?? 0} value={totalMockWeek} title="Venda Semanal" icon={<MoneyWavy className="w-[2em] h-[2em] text-[#264A7D]" />} /> */}
                 
-                <Card quantity={mockrowsMonth?.length ?? 0} value={totalMockMonth} title="Venda mensal" icon={<Money className="w-[2em] h-[2em] text-[#264A7D]" />} />
+                <Card quantity={sales?.length ?? 0} value={totalMockMonth} title="Venda Total" icon={<Money className="w-[2em] h-[2em] text-[#264A7D]" />} />
                 
             </div>
 

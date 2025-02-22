@@ -2,12 +2,14 @@ import { CaretDoubleLeft, CaretDoubleRight } from '@phosphor-icons/react';
 import { useState } from 'react';
 import SaleModal from '../modal/sale-modal';
 import ItemSoldModal from '../modal/item-sold-modal';
+import { useMoneyConvert } from '../../../../common/hook/useMoneyConvert';
 
 type tableProps = {
     data: {
         cliente: { nome: string, telefone: string},
         producto: {nome: string},
-        quantidade: number
+        quantidade: number,
+        total_a_pagar: number;
 
     }[],
     title: string, 
@@ -30,7 +32,7 @@ export const SalesTable = ({data, title}: tableProps) => {
           <td className="px-4 py-2">{data?.cliente?.telefone}</td>
           <td className="px-4 py-2">{data?.producto?.nome}</td>
           <td className="px-4 py-2">{data?.quantidade}</td> 
-          {/* <SaleModal/>  */}
+          <td className="px-4 py-2">{useMoneyConvert(data?.total_a_pagar)}</td>
           <ItemSoldModal data={data} index={index}/>
         </tr> 
         ));
@@ -67,6 +69,7 @@ export const SalesTable = ({data, title}: tableProps) => {
                     <th className="px-[.5em] py-2">Telefone</th>
                     <th className="px-[.5em] py-2">Producto</th>
                     <th className="px-[.5em] py-2">Quantidade</th>
+                    <th className="px-[.5em] py-2">Total</th>
                     <th className="px-[.5em] py-2">Acção</th>
                 </tr>
 

@@ -2,6 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Eye, X } from '@phosphor-icons/react';
+import { useNavigate } from 'react-router-dom';
+import { useMoneyConvert } from '../../../../common/hook/useMoneyConvert';
 
 const style = {
   position: 'absolute',
@@ -18,20 +20,24 @@ const style = {
 
 type aa = {
   data: any,
-  index: number
+  index: number,
 }
 
 
 export default function ItemSoldModal({data, index}: aa) {
   
   const [open, setOpen] = React.useState(false);
+
+  const navigate = useNavigate();
   
   const handleOpen = () => setOpen(true);
   
   const handleClose = () => setOpen(false);
 
+  const dataToParams = data && JSON.stringify(data);
+
   const handlePrint = () => {
-    window.print();
+    navigate(`/sale/sale-print-sale-ticket/${dataToParams}`);
   }
 
   console.log("MODAL SOLD", data)
@@ -42,6 +48,8 @@ export default function ItemSoldModal({data, index}: aa) {
   const time = parseTime?.split("Z")[0];
 
   console.log("Parse", parseTime?.split("Z")[0])
+
+  const productPrice = data?.producto?.preco;
 
 
   return (
@@ -112,15 +120,15 @@ export default function ItemSoldModal({data, index}: aa) {
                 {/* <!-- Producto --> */}
 
                 <span className='flex justify-between'>
-                  <p>Cód: eahfdy-jdhey-djdj</p>
-                  <p>(UN)</p>
-                  <p>{data?.producto?.nome}</p>
+                  <p className='w-[15em]'>Cód: {data?.id}</p>
+                  <p className='w-[15em]'>(UN)</p>
+                  <p className='w-[15em]'>{data?.producto?.nome}</p>
                 </span>
 
                 <span className='flex justify-between'>
-                  <p>001</p>
-                  <p>{data?.quantidade} QTD</p>
-                  <p>{data?.producto?.preco}</p>
+                  <p className='w-[15em]'>001</p>
+                  <p className='w-[15em]'>{data?.quantidade} QTD</p>
+                  <p className='w-[15em]'>{useMoneyConvert(productPrice)}</p>
                 </span>
 
                 {/* <!-- Producto --> */}
@@ -131,7 +139,7 @@ export default function ItemSoldModal({data, index}: aa) {
                 <span>
                   <span className='flex flex-col items-end justify-end'>
                     <p>------------------</p>
-                    <p>TOTAL: 290 Kz</p>
+                    <p>TOTAL: {useMoneyConvert(data?.total_a_pagar)}</p>
                   </span>
                 </span>
 
@@ -143,16 +151,16 @@ export default function ItemSoldModal({data, index}: aa) {
                   <p>-</p>
                   <p> PDV:8</p>
                   <p>-</p>
-                  <p>Operador: 92465 - Anael Domingos</p>
+                  <p>Operador: 92465 - {data?.vendedor?.nome_de_usuario}</p>
                 </span>
               </div>
 
-              <div className='my-[2em] items-center flex flex-col justify-center'>
+              <div className='items-center flex flex-col justify-center'>
                 <h1>VOLTE SEMPRE</h1>
                 <p>MOEDA KWANZA</p>
                 <p>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
               </div>
-              <div>
+              <div className='items-center flex flex-col justify-center'>
                 <p>f/Processada por computador</p>
                 <p>Software Licenciado pela AGT, certificação nº: 74/AGT/2019</p>
               </div>

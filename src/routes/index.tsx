@@ -21,6 +21,7 @@ import SupportAdministrator from "../modules/administrator/page/support";
 import RoleManagement from "../modules/administrator/page/role-management";
 import EmployerManagement from "../modules/administrator/page/employer-management";
 import ProductManagement from "../modules/stock/page/product-management";
+import { PrintScreenTicket } from "../modules/sale/page/print-screen-ticket";
 
 
 export function RoutePath () {
@@ -42,12 +43,15 @@ export function RoutePath () {
                 <Route path="sale" element={<ProtectedRouteSaler><HomeSale/></ProtectedRouteSaler>}/> 
                 <Route path="sale/client" element={<ProtectedRouteSaler><ClientManagement/></ProtectedRouteSaler>}/> 
                 <Route path="sale/support" element={<ProtectedRouteSaler><SupportSale/></ProtectedRouteSaler>}/>
+                
+                <Route path="sale/sale-print-sale-ticket/:data" element={<ProtectedRouteSaler><PrintScreenTicket/></ProtectedRouteSaler>}/>
 
                 <Route path="administrator" element={<ProtectedRouteAdministrator><HomeAdm/></ProtectedRouteAdministrator>} />
                 <Route path="administrator/employer" element={<ProtectedRouteAdministrator><EmployerManagement/></ProtectedRouteAdministrator>} />
                 <Route path="administrator/user" element={<ProtectedRouteAdministrator><UserManagement/></ProtectedRouteAdministrator>} />
                 <Route path="administrator/support" element={<ProtectedRouteAdministrator><SupportAdministrator/></ProtectedRouteAdministrator>} />
                 <Route path="administrator/role" element={<ProtectedRouteAdministrator><RoleManagement/></ProtectedRouteAdministrator>} />
+                
                 
                 <Route path="*" element={<NotFound/>} />
                 
